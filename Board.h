@@ -13,8 +13,8 @@ class Board {
 		~Board():
 		bool positionOnBoard(unsigned row, unsigned col) static;
 		void advance();
-		void addInstruction();
-		void addArrow();
+		void addInstruction(const Instruction& inst, unsigned row, unsigned col, unsigned waldo);
+		void addArrow(Arrow arrow, unsigned row, unsigned col, unsigned waldo);
 };
 
 #endif // ifndef __board_h_
