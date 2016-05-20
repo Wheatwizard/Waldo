@@ -24,11 +24,11 @@ class Tile {
 			delete [] instructions;
 		}
 		//ACCESSORS
-		Arrow get_arrow(unsigned waldo);
-		Instruction get_instruction(unsigned waldo);
+		Arrow getArrow(unsigned waldo);
+		Instruction getInstruction(unsigned waldo);
 		//MODIFIERS
-		void set_arrow(unsigned waldo, Arrow end_state);
-		void set_instruction();
+		void setArrow(unsigned waldo, Arrow end_state);
+		void setInstruction();
 	private:
 		unsigned waldos;
 		Arrow* arrows;
