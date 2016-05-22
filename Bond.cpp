@@ -1,10 +1,8 @@
 #include "Bond.h"
 
 template<class Atom>
-Bond<Atom>::Bond(Atom& left, Atom& right) {
-	//left and right are not distinguishible
-	atoms[0] = *left;
-	atoms[1] = *right;
+Bond<Atom>::Bond(Atom& left) {
+	atom = *left;
 	strength = 1;
 }
 

@@ -6,7 +6,7 @@ template<class Atom>
 class Bond {
 	public:
 		//CONSTRUCTOR
-		Bond(Atom& left, Atom& right);
+		Bond(Atom& left);
 		//ACCESSORS
 		//If a bond has strength 0 it is broken
 		bool isValid() const { return strength > 0; }
@@ -19,7 +19,7 @@ class Bond {
 		Bond& operator--();
 		Bond& operator--(int);
 	private:
-		Atom* atoms[2];
+		Atom* atom;
 		unsigned strength;
 };
 
