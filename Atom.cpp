@@ -8,3 +8,17 @@ Atom Atom::operator+(Atom& other) const {
 		//TODO throw an error
 	}
 }
+
+/*
+clean bonds removes all unecessary bonds.
+(Bonds with strength zero)
+*/
+
+void Atom::cleanBonds() {
+	for (unsigned i = 0; i < bonds.size(); ++i) {
+		if (!bonds[i].isValid()) {
+			bonds.erase(bonds.begin()+i);
+			--i;
+		}
+	}
+}

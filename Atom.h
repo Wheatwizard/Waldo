@@ -19,8 +19,12 @@ based on the particular element. Unsigned int atoms can potentially unlimited bo
 class Atom {
 	public:
 		Atom(atom_variety variety,unsigned val) : type(variety), value(val) {};
+		unsigned getValue() const { return value; }
 		Atom operator+(Atom& other) const;
 	private:
+		void cleanBonds();
+	private:
+		//Memeber variables
 		atom_variety type;
 		unsigned value;
 		std::vector<Bond<Atom> > bonds;

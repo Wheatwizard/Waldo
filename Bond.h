@@ -9,7 +9,7 @@ class Bond {
 		Bond(Atom& left, Atom& right);
 		//ACCESSORS
 		//If a bond has strength 0 it is broken
-		bool isValid() const;
+		bool isValid() const { return strength > 0; }
 		unsigned getStrength() const { return strength; }
 		//OPERATORS
 		//the increment operator makes the bond one stronger

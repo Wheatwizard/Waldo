@@ -9,11 +9,6 @@ Bond<Atom>::Bond(Atom& left, Atom& right) {
 }
 
 template<class Atom>
-bool Bond<Atom>::isValid() const {
-	return strength > 0;
-}
-
-template<class Atom>
 Bond<Atom>& Bond<Atom>::operator++() {
 	++strength;
 	return *this;
