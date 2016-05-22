@@ -16,8 +16,7 @@ class Waldo {
 		}
 
 		unsigned getPriority() const { return priority; }
-
-
+		void move();
 	private:
 		std::string name;
 		Atom* holding;
