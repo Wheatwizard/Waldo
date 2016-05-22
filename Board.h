@@ -3,15 +3,14 @@
 
 #include "Tile.h"
 #include "Waldo.h"
-#include <vector>
 
 class Board {
 	private:
-		unsigned w, h;
-		std::vector<std::vector<Tile> > board;
-		std::vector<Waldo> waldos;
+		unsigned w, h, waldo_num;
+		Tile** board;
+		Waldo* waldos;
 	public:
-		Board(unsigned width, unsigned height, unsigned waldo_num);
+		Board(unsigned width, unsigned height, unsigned num_waldos);
 		~Board();
 		bool positionOnBoard(unsigned row, unsigned col) const;
 		void advance();

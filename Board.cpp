@@ -2,18 +2,23 @@
 
 #include <stdexcept>
 
-Board::Board(unsigned width, unsigned height, unsigned waldo_num) : w(width), h(height) {
-	waldos.reserve(waldo_num);
-	for (unsigned i = 0; i < h; ++i) {
-		board.push_back(std::vector<Tile>());
-		for (unsigned j = 0; j < w; ++j) {
-			board[i].push_back(Tile(waldo_num));
+Board::Board(unsigned width, unsigned height, unsigned num_waldos)
+	: w(width), h(height), waldo_num(num_waldos), board(new Tile*[height]),
+	  waldos(new Waldo[num_waldos]) {
+	for (unsigned i = 0; i < height; ++i) {
+		board[i] = new Tile[width];
+		for (unsigned j = 0; j < width; ++j) {
+			board[i][j].initialize(num_waldos);
 		}
 	}
 }
 
 Board::~Board() {
-	//Currently this has no real use
+	for (unsigned i = 0; i < h; ++i) {
+		delete [] board[i];
+	}
+	delete [] waldos;
+	delete [] board;
 }
 
 bool Board::positionOnBoard(unsigned row, unsigned col) const {
@@ -22,9 +27,10 @@ bool Board::positionOnBoard(unsigned row, unsigned col) const {
 
 void Board::advance() {
 	//Iterate through the waldos in priority order 
-	for (unsigned i = 0; i < waldos.size(); ++i) {
+	for (unsigned i = 0; i < waldo_num; ++i) {
 		//Move the Waldo
 		waldos[i].move();
+		// we need to make sure that no atoms go off the board someplace
 		waldos[i].bound(w,h);
 		//Redirect
 		waldos[i].setDirection(board[waldos[i].getRow()][waldos[i].getCol()].getArrow(i));
