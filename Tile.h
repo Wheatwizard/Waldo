@@ -19,10 +19,12 @@ class Tile {
 				arrows[i] = NO_ARROW;
 			}
 			instructions = new Instruction[waldo_max];
+			atom = NULL;
 		}
 		~Tile() {
 			delete [] arrows;
 			delete [] instructions;
+			delete atom;
 		}
 		//ACCESSORS
 		Arrow getArrow(unsigned waldo);
@@ -34,6 +36,7 @@ class Tile {
 		unsigned waldos;
 		Arrow* arrows;
 		Instruction* instructions;
+		Atom* atom;
 };
 
 #endif

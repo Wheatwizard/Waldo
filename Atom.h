@@ -1,6 +1,10 @@
 #ifndef __atom_h_
 #define __atom_h_
 
+#include "Bond.h"
+#include <vector>
+
+
 enum atom_variety {TRADITIONAL, ADVANCED};
 
 /*
@@ -15,10 +19,11 @@ based on the particular element. Unsigned int atoms can potentially unlimited bo
 class Atom {
 	public:
 		Atom(atom_variety variety,unsigned val) : type(variety), value(val) {};
-		Atom operator+(Atom other) const;
+		Atom operator+(Atom& other) const;
 	private:
 		atom_variety type;
 		unsigned value;
+		std::vector<Bond<Atom> > bonds;
 };
 
 #endif
