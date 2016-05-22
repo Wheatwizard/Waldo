@@ -24,8 +24,8 @@ void Board::advance() {
 	//Iterate through the waldos in priority order 
 	for (unsigned i = 0; i < waldos.size(); ++i) {
 		//Move the Waldo
-		waldos[i].move();
-		waldos[i].bound(w,h);
+		waldos[i].move(board);
+		waldos[i].bound(board);
 		//Redirect
 		waldos[i].setDirection(board[waldos[i].getRow()][waldos[i].getCol()].getArrow(i));
 		//Perform instruction

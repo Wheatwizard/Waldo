@@ -6,6 +6,7 @@ enum direction {NO_DIRECTION = 0, LEFT, UP, RIGHT, DOWN};
 
 #include <string>
 #include "Atom.h"
+#include "Tile.h"
 
 class Waldo {
 	public:
@@ -24,9 +25,11 @@ class Waldo {
 		unsigned getRow() const { return coords[0]; }
 		unsigned getCol() const { return coords[1]; }
 		//MODIFIERS
-		void move();
-		void bound(unsigned x_coord, unsigned y_coord);
+		void move(std::vector<std::vector<Tile> >& board);
+		void bound(std::vector<std::vector<Tile> >& board);
 		void setDirection(unsigned end_direction);
+	private:
+		void move(std::vector<std::vector<Tile> >& board, unsigned direction);
 	private:
 		std::string name;
 		Atom* holding;
