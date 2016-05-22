@@ -21,7 +21,16 @@ bool Board::positionOnBoard(unsigned row, unsigned col) const {
 }
 
 void Board::advance() {
-	// TODO write this
+	//Iterate through the waldos in priority order 
+	for (unsigned i = 0; i < waldos.size(); ++i) {
+		//Move the Waldo
+		waldos[i].move();
+		waldos[i].bound(w,h);
+		//Redirect
+		waldos[i].setDirection(board[waldos[i].getRow()][waldos[i].getCol()].getArrow(i));
+		//Perform instruction
+		//TODO
+	}
 }
 
 void Board::addInstruction(const Instruction& inst, unsigned row, unsigned col, unsigned waldo) {

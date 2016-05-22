@@ -30,3 +30,9 @@ void Waldo::bound(unsigned row, unsigned col) {
 	coords[0] = std::min(coords[0]-1,row);
 	coords[1] = std::min(coords[1]-1,col);
 }
+
+void Waldo::setDirection(unsigned end_direction) {
+	if (end_direction) {
+		facing = static_cast<direction>(end_direction);
+	}
+}

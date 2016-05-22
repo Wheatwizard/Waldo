@@ -21,9 +21,12 @@ class Waldo {
 		}
 		//ACCESSORS
 		unsigned getPriority() const { return priority; }
+		unsigned getRow() const { return coords[0]; }
+		unsigned getCol() const { return coords[1]; }
 		//MODIFIERS
 		void move();
 		void bound(unsigned x_coord, unsigned y_coord);
+		void setDirection(unsigned end_direction);
 	private:
 		std::string name;
 		Atom* holding;
