@@ -2,6 +2,7 @@
 #define __tile_h_
 
 #include "Instruction.h"
+#include "Waldo.h"
 
 enum Arrow {NO_ARROW = 0, RIGHT_ARROW, UP_ARROW, LEFT_ARROW, DOWN_ARROW};
 
