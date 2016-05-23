@@ -6,14 +6,19 @@ class Atom;
 
 #include "Atom.h"
 
+enum Direction {NO_DIRECTION = 0, LEFT, UP, RIGHT, DOWN};
+
 class Bond {
 	public:
 		//CONSTRUCTOR
-		Bond(Atom& left);
+		Bond(Direction d);
+		Bond(Atom& a, Direction d);
 		//ACCESSORS
 		//If a bond has strength 0 it is broken
 		bool isValid() const { return strength > 0; }
 		unsigned getStrength() const { return strength; }
+		//MODIFIERS
+		void update();
 		//OPERATORS
 		//the increment operator makes the bond one stronger
 		Bond& operator++();
@@ -24,6 +29,7 @@ class Bond {
 	private:
 		Atom* atom;
 		unsigned strength;
+		Direction direction;
 };
 
 #endif

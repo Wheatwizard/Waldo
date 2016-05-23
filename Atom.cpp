@@ -16,10 +16,7 @@ clean bonds removes all unecessary bonds.
 */
 
 void Atom::cleanBonds() {
-	for (unsigned i = 0; i < bonds.size(); ++i) {
-		if (!bonds[i].isValid()) {
-			bonds.erase(bonds.begin()+i);
-			--i;
-		}
+	for (unsigned i = 0; i < 4; ++i) {
+		bonds[i].update();
 	}
 }

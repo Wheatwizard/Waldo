@@ -6,8 +6,6 @@
 class Board;
 #include "Board.h"
 
-enum Direction {NO_DIRECTION = 0, LEFT, UP, RIGHT, DOWN};
-
 #include <string>
 #include "Atom.h"
 #include "Tile.h"

@@ -30,7 +30,7 @@ class Atom {
 		//Memeber variables
 		atom_variety type;
 		unsigned value;
-		std::vector<Bond> bonds;
+		Bond bonds[4];
 };
 
 #endif

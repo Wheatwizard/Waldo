@@ -1,8 +1,21 @@
 #include "Bond.h"
 
-Bond::Bond(Atom& left) {
-	atom = &left;
+Bond::Bond(Direction d) {
+	atom = NULL;
+	direction = d;
+	strength = 0;
+}
+
+Bond::Bond(Atom& a, Direction d) {
+	atom = &a;
+	direction = d;
 	strength = 1;
+}
+
+void Bond::update() {
+	if (strength == 0) {
+		atom = NULL;
+	}
 }
 
 Bond& Bond::operator++() {
