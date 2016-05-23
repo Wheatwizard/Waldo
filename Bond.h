@@ -4,13 +4,12 @@
 //forward declare Atom
 class Atom;
 
-#include "Atom.h"
-
 enum Direction {NO_DIRECTION = 0, LEFT, UP, RIGHT, DOWN};
 
 class Bond {
 	public:
 		//CONSTRUCTOR
+		Bond();
 		Bond(Direction d);
 		Bond(Atom& a, Direction d);
 		//ACCESSORS
@@ -31,5 +30,8 @@ class Bond {
 		unsigned strength;
 		Direction direction;
 };
+
+// this needs to be down here otherwise compiler errors
+#include "Atom.h"
 
 #endif

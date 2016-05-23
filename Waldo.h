@@ -24,8 +24,6 @@ class Waldo {
 		void move(Board& board, Direction direction);
 		void setDirection(unsigned end_direction);
 	private:
-		void move(std::vector<std::vector<Tile> >& board, unsigned direction);
-	private:
 		std::string name;
 		unsigned r, c, priority;
 		Atom* holding;

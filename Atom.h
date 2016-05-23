@@ -5,7 +5,6 @@
 class Bond;
 
 #include "Bond.h"
-#include <vector>
 
 
 enum atom_variety {TRADITIONAL, ADVANCED};

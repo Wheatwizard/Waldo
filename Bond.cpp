@@ -1,16 +1,11 @@
 #include "Bond.h"
+#include <cstddef>
 
-Bond::Bond(Direction d) {
-	atom = NULL;
-	direction = d;
-	strength = 0;
-}
+Bond::Bond() : atom(NULL), strength(0), direction(NO_DIRECTION) {}
 
-Bond::Bond(Atom& a, Direction d) {
-	atom = &a;
-	direction = d;
-	strength = 1;
-}
+Bond::Bond(Direction d) : atom(NULL), strength(0), direction(d) {}
+
+Bond::Bond(Atom& a, Direction d) : atom(&a), strength(1), direction(d) {}
 
 void Bond::update() {
 	if (strength == 0) {
