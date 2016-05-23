@@ -1,8 +1,11 @@
 #ifndef __bond_h_
 #define __bond_h_
 
-//I templated this class to avoid some issues I was having this is not ideal and should be fixed later
-template<class Atom>
+//forward declare Atom
+class Atom;
+
+#include "Atom.h"
+
 class Bond {
 	public:
 		//CONSTRUCTOR
@@ -14,10 +17,10 @@ class Bond {
 		//OPERATORS
 		//the increment operator makes the bond one stronger
 		Bond& operator++();
-		Bond& operator++(int);
+		Bond  operator++(int);
 		//the decrement operator makes the bond one weaker but cannot go below zero
 		Bond& operator--();
-		Bond& operator--(int);
+		Bond  operator--(int);
 	private:
 		Atom* atom;
 		unsigned strength;

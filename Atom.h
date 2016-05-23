@@ -1,6 +1,9 @@
 #ifndef __atom_h_
 #define __atom_h_
 
+//forward declare Bond
+class Bond;
+
 #include "Bond.h"
 #include <vector>
 
@@ -27,7 +30,7 @@ class Atom {
 		//Memeber variables
 		atom_variety type;
 		unsigned value;
-		std::vector<Bond<Atom> > bonds;
+		std::vector<Bond> bonds;
 };
 
 #endif
