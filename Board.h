@@ -2,6 +2,10 @@
 #define __board_h_
 
 #include "Tile.h"
+
+//forward declare Waldo
+class Waldo;
+
 #include "Waldo.h"
 
 class Board {
@@ -16,6 +20,14 @@ class Board {
 		void advance();
 		void addInstruction(const Instruction& inst, unsigned row, unsigned col, unsigned waldo);
 		void addArrow(Arrow arrow, unsigned row, unsigned col, unsigned waldo);
+		//ACCESSORS
+		unsigned getNumCols() const { return w; }
+		unsigned getNumRows() const { return h; }
+		//OPERATORS
+		Tile* operator[] (unsigned index) {
+			assert(index < getNumRows());
+			return board[index];
+		}
 };
 
 #endif // ifndef __board_h_

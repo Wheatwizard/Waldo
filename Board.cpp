@@ -29,9 +29,7 @@ void Board::advance() {
 	//Iterate through the waldos in priority order 
 	for (unsigned i = 0; i < waldo_num; ++i) {
 		//Move the Waldo
-		waldos[i].move();
-		// we need to make sure that no atoms go off the board someplace
-		waldos[i].bound(w,h);
+		waldos[i].move(*this);
 		//Redirect
 		waldos[i].setDirection(board[waldos[i].getRow()][waldos[i].getCol()].getArrow(i));
 		//Perform instruction

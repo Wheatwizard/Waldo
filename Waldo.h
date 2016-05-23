@@ -2,10 +2,15 @@
 #ifndef __waldo_h_
 #define __waldo_h_
 
+//forward declare Board
+class Board;
+#include "Board.h"
+
 enum Direction {NO_DIRECTION = 0, LEFT, UP, RIGHT, DOWN};
 
 #include <string>
 #include "Atom.h"
+#include "Tile.h"
 
 class Waldo {
 	public:
@@ -17,9 +22,11 @@ class Waldo {
 		unsigned getRow() const { return r; }
 		unsigned getCol() const { return c; }
 		//MODIFIERS
-		void move();
-		void bound(unsigned x_coord, unsigned y_coord);
+		void move(Board& board);
+		void move(Board& board, Direction direction);
 		void setDirection(unsigned end_direction);
+	private:
+		void move(std::vector<std::vector<Tile> >& board, unsigned direction);
 	private:
 		std::string name;
 		unsigned r, c, priority;
