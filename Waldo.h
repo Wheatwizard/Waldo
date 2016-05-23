@@ -23,6 +23,10 @@ class Waldo {
 		void move(Board& board);
 		void move(Board& board, Direction direction);
 		void setDirection(unsigned end_direction);
+		//INSTRUCTIONS
+		void grab(Board& board);
+		void drop();
+		void grabDrop(Board& board);
 	private:
 		std::string name;
 		unsigned r, c, priority;

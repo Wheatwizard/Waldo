@@ -2,6 +2,24 @@
 
 #include "Waldo.h"
 
+//INSTRUCTIONS
+
+void Waldo::drop() {
+	holding = NULL;
+}
+
+void Waldo::grab(Board& board) {
+	holding = board[r][c].getAtom();
+}
+
+void Waldo::grabDrop(Board& board) {
+	if (holding) {
+		drop();
+	} else {
+		grab(board);
+	}
+}
+	
 
 /*
  * Note that this is a nonmember function. It is not declared in the .h file
