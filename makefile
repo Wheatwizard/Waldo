@@ -31,10 +31,10 @@ Waldo.o : Waldo.h Waldo.cpp Atom.h
 clean :
 	rm -f waldo $(objects)
 
-all: quad_tree
+all: waldo
 
-debug: quad_tree
+debug: waldo
 
-clang : quad_tree
+clang : waldo
 
 clangdbg : clang
