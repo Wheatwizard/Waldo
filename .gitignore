@@ -2,4 +2,4 @@
 *.o
 *.wdo
 waldo
-*.out
+*.out*
