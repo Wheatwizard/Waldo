@@ -19,13 +19,13 @@ Atom.o : Atom.h Atom.cpp Bond.h
 Board.o: Board.h Board.cpp Tile.h Waldo.h
 	$(CXX) -c $(CXXFLAGS) Board.cpp
 
-Bond.o : Bond.h Bond.cpp
+Bond.o : Bond.h Bond.cpp Atom.h
 	$(CXX) -c $(CXXFLAGS) Bond.cpp
 
-Tile.o : Tile.h Tile.cpp Instruction.h Waldo.h
+Tile.o : Tile.h Tile.cpp Atom.h Instruction.h
 	$(CXX) -c $(CXXFLAGS) Tile.cpp
 
-Waldo.o : Waldo.h Waldo.cpp Atom.h
+Waldo.o : Waldo.h Waldo.cpp Atom.h Board.h Tile.h
 	$(CXX) -c $(CXXFLAGS) Waldo.cpp
 
 clean :
