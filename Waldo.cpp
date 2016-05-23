@@ -74,6 +74,15 @@ void Waldo::move(Board& board, Direction direction) {
 	board.dropAtom(holding, r, c);
 }
 
+void Waldo::rotate(Board& board, bool direction) {
+	//Pop the current molecule off the board
+	board.popAtom(holding, r, c);
+	//Rotate the molecule
+	holding->rotate(direction);
+	//Put the molecule on the board
+	board.dropAtom(holding, r, c);
+}
+
 void Waldo::setDirection(unsigned end_direction) {
 	if (end_direction) {
 		facing = static_cast<Direction>(end_direction);

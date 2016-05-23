@@ -24,7 +24,11 @@ class Atom {
 		unsigned getValue() const { return value; }
 		Atom operator+(Atom& other) const;
 		//ACCESSORS
-		Bond& getBond(Direction direction) { return bonds[direction]; }
+		const Bond& getBond(Direction direction) const { return bonds[direction]; }
+		const Bond& getBond(unsigned  direction) const { return bonds[direction]; }
+		//MODIFIERS
+		void roll(bool direction);
+		void rotate(bool direction);
 	private:
 		void cleanBonds();
 	private:

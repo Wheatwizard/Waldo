@@ -10,8 +10,7 @@ class Bond {
 	public:
 		//CONSTRUCTOR
 		Bond();
-		Bond(Direction d);
-		Bond(Atom& a, Direction d);
+		Bond(Atom& a);
 		//ACCESSORS
 		//If a bond has strength 0 it is broken
 		bool isValid() const { return strength > 0; }
@@ -29,7 +28,6 @@ class Bond {
 	private:
 		Atom* atom;
 		unsigned strength;
-		Direction direction;
 };
 
 // this needs to be down here otherwise compiler errors
