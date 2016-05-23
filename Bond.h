@@ -16,6 +16,7 @@ class Bond {
 		//If a bond has strength 0 it is broken
 		bool isValid() const { return strength > 0; }
 		unsigned getStrength() const { return strength; }
+		Atom* getAtom() const { return atom; }
 		//MODIFIERS
 		void update();
 		//OPERATORS

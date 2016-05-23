@@ -23,6 +23,8 @@ class Atom {
 		Atom(atom_variety variety,unsigned val) : type(variety), value(val) {};
 		unsigned getValue() const { return value; }
 		Atom operator+(Atom& other) const;
+		//ACCESSORS
+		Bond& getBond(Direction direction) { return bonds[direction]; }
 	private:
 		void cleanBonds();
 	private:

@@ -30,20 +30,30 @@ void Waldo::move(Board& board) {
 }
 
 void Waldo::move(Board& board, Direction direction) {
-	//There might be a better way to do this
-	if (direction) {
-		if (direction == DOWN) {
-			r = std::min(r, board.getNumRows());
-		} else if (direction == UP) {
-			//Prevent the waldo from moving off the board
-			r = std::min(r, r - 1);
-		} else if (direction == RIGHT) {
-			c = std::min(c, board.getNumCols());
-		} else if (direction == LEFT) {
-			//Prevent the waldo from moving off the board
-			c = std::min(c, c - 1);
-		}
+	int dr = 0, dc = 0;
+	switch (direction) {
+		case DOWN :
+			dr = (r+1 != board.getNumRows());
+			break;
+		case UP :
+			dr = -(r != 0);
+			break;
+		case RIGHT :
+			dc = (c+1 != board.getNumCols());
+			break;
+		case LEFT :
+			dc = -(c != 0);
+			break;
+		case NO_DIRECTION :
+			break;
 	}
+	//Pop current molecule off the board
+	board.popAtom(holding, r, c);	
+	//Move Waldo
+	r += dr;
+	c += dc;
+	//Put Molecule on the board
+	board.dropAtom(holding, r, c);
 }
 
 void Waldo::setDirection(unsigned end_direction) {

@@ -20,6 +20,8 @@ class Board {
 		void advance();
 		void addInstruction(const Instruction& inst, unsigned row, unsigned col, unsigned waldo);
 		void addArrow(Arrow arrow, unsigned row, unsigned col, unsigned waldo);
+		void popAtom(Atom* root, unsigned row, unsigned col);
+		void dropAtom(Atom* roow, unsigned row, unsigned col);
 		//ACCESSORS
 		unsigned getNumCols() const { return w; }
 		unsigned getNumRows() const { return h; }
