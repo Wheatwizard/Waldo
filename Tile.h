@@ -1,6 +1,9 @@
 #ifndef __tile_h_
 #define __tile_h_
 
+#include <cassert>
+#include <stdexcept>
+
 #include "Instruction.h"
 #include "Atom.h"
 
@@ -12,20 +15,10 @@ This class is for the tiles that make up the board
 
 class Tile {
 	public:
-		Tile(unsigned waldo_max) {
-			waldos = waldo_max;
-			arrows =  new Arrow[waldo_max];
-			for (unsigned i = 0; i < waldo_max; ++i) {
-				arrows[i] = NO_ARROW;
-			}
-			instructions = new Instruction[waldo_max];
-			atom = NULL;
-		}
-		~Tile() {
-			delete [] arrows;
-			delete [] instructions;
-			delete atom;
-		}
+		Tile();
+		Tile(unsigned waldo_max);
+		~Tile();
+		void initialize(unsigned waldo_max);
 		//ACCESSORS
 		Arrow getArrow(unsigned waldo) const;
 		Instruction getInstruction(unsigned waldo) const;

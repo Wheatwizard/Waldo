@@ -2,44 +2,52 @@
 
 #include "Waldo.h"
 
-void Waldo::move(std::vector<std::vector<Tile> >& board) {
+
+/*
+ * Note that this is a nonmember function. It is not declared in the .h file
+ * because it is not meant to be called outside this class.
+ */
+unsigned createPriority() {
+	static unsigned id = 0;
+	return id++; // returns the value that id had before incrementing
+}
+
+Waldo::Waldo() : priority(createPriority()), holding(NULL), facing(NO_DIRECTION),
+	paused(false) {}
+
+Waldo::Waldo(const std::string& waldo_name, unsigned row, unsigned col)
+	: name(waldo_name), r(row), c(col), priority(createPriority()), holding(NULL),
+	  facing(NO_DIRECTION), paused(false) {}
+
+void Waldo::initialize(const std::string& waldo_name, unsigned row, unsigned col) {
+	name = waldo_name;
+	r = row;
+	c = col;
+}
+
+void Waldo::move(Board& board) {
 	move(board, facing);
 }
 
-void Waldo::move(std::vector<std::vector<Tile> >& board, unsigned direction) {
+void Waldo::move(Board& board, Direction direction) {
 	//There might be a better way to do this
 	if (direction) {
 		if (direction == DOWN) {
-			++coords[1];
+			r = std::min(r, board.getNumRows());
 		} else if (direction == UP) {
 			//Prevent the waldo from moving off the board
-			coords[1] = std::min(coords[1],coords[1]-1);
+			r = std::min(r, r - 1);
 		} else if (direction == RIGHT) {
-			++coords[0];
+			c = std::min(c, board.getNumCols());
 		} else if (direction == LEFT) {
 			//Prevent the waldo from moving off the board
-			coords[0] = std::min(coords[0],coords[0]-1);
+			c = std::min(c, c - 1);
 		}
-	}	
-}
-
-/*
-Puts the Waldo back on the board if it has moved off
-*/
-
-void Waldo::bound(std::vector<std::vector<Tile> >& board) {
-	//Row and col are the number of rows/columns
-	//Not the index of the largest row/column
-	if (coords[0] > board.size()) {
-		move(board, UP);
-	}
-	if (coords[1] > board[0].size()) {
-		move(board, LEFT);
 	}
 }
 
 void Waldo::setDirection(unsigned end_direction) {
 	if (end_direction) {
-		facing = static_cast<direction>(end_direction);
+		facing = static_cast<Direction>(end_direction);
 	}
 }

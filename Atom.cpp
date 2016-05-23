@@ -6,6 +6,7 @@ Atom Atom::operator+(Atom& other) const {
 		return Atom(this->type, this->value + other.value);
 	} else {
 		//TODO throw an error
+		throw 10; // this should stop it from generating a warning
 	}
 }
 

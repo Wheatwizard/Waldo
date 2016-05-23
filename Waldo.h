@@ -2,7 +2,11 @@
 #ifndef __waldo_h_
 #define __waldo_h_
 
-enum direction {NO_DIRECTION = 0, LEFT, UP, RIGHT, DOWN};
+//forward declare Board
+class Board;
+#include "Board.h"
+
+enum Direction {NO_DIRECTION = 0, LEFT, UP, RIGHT, DOWN};
 
 #include <string>
 #include "Atom.h"
@@ -10,33 +14,25 @@ enum direction {NO_DIRECTION = 0, LEFT, UP, RIGHT, DOWN};
 
 class Waldo {
 	public:
-		Waldo(std::string n, unsigned row, unsigned col) {
-			name = n;
-			coords[0] = row;
-			coords[1] = col;
-			holding = NULL;
-			facing = NO_DIRECTION;
-			paused = false;
-			static unsigned id = 0;
-			priority = id++;
-		}
+		Waldo();
+		Waldo(const std::string& waldo_name, unsigned row, unsigned col);
+		void initialize(const std::string& waldo_name, unsigned row, unsigned col);
 		//ACCESSORS
 		unsigned getPriority() const { return priority; }
-		unsigned getRow() const { return coords[0]; }
-		unsigned getCol() const { return coords[1]; }
+		unsigned getRow() const { return r; }
+		unsigned getCol() const { return c; }
 		//MODIFIERS
-		void move(std::vector<std::vector<Tile> >& board);
-		void bound(std::vector<std::vector<Tile> >& board);
+		void move(Board& board);
+		void move(Board& board, Direction direction);
 		void setDirection(unsigned end_direction);
 	private:
 		void move(std::vector<std::vector<Tile> >& board, unsigned direction);
 	private:
 		std::string name;
+		unsigned r, c, priority;
 		Atom* holding;
-		direction facing;
+		Direction facing;
 		bool paused;
-		unsigned coords[2];
-		unsigned priority;
 };
 
 #endif
