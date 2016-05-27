@@ -18,6 +18,7 @@ class Bond {
 		Atom* getAtom() const { return atom; }
 		//MODIFIERS
 		void update();
+		void setAtom(Atom* goal) { atom = goal; }
 		//OPERATORS
 		//the increment operator makes the bond one stronger
 		Bond& operator++();

@@ -7,7 +7,12 @@
 #include "Instruction.h"
 #include "Atom.h"
 
-enum Arrow {NO_ARROW = 0, RIGHT_ARROW, UP_ARROW, LEFT_ARROW, DOWN_ARROW};
+//forward declare board
+class Board;
+
+#include "Board.h"
+
+enum Mat { NO_MAT = 0, BOND };
 
 /*
 This class is for the tiles that make up the board
@@ -20,19 +25,22 @@ class Tile {
 		~Tile();
 		void initialize(unsigned waldo_max);
 		//ACCESSORS
-		Arrow getArrow(unsigned waldo) const;
+		Direction getArrow(unsigned waldo) const;
 		Instruction getInstruction(unsigned waldo) const;
 		Atom* getAtom() const;
 		//MODIFIERS
-		void setArrow(unsigned waldo, Arrow end_state);
+		void setArrow(unsigned waldo, Direction end_state);
 		void setInstruction();
 		void addAtom(Atom* atom);
 		void removeAtom();
+		void bond(Board& board, unsigned row, unsigned col);
+		void debond(Board& board, unsigned row, unsigned col);
 	private:
 		unsigned waldos;
-		Arrow* arrows;
+		Direction* arrows;
 		Instruction* instructions;
 		Atom* atom;
+		Mat mat;
 };
 
 #endif

@@ -1,6 +1,9 @@
 #ifndef __board_h_
 #define __board_h_
 
+//forward declare Tile
+class Tile;
+
 #include "Tile.h"
 
 //forward declare Waldo
@@ -19,9 +22,10 @@ class Board {
 		bool positionOnBoard(unsigned row, unsigned col) const;
 		void advance();
 		void addInstruction(const Instruction& inst, unsigned row, unsigned col, unsigned waldo);
-		void addArrow(Arrow arrow, unsigned row, unsigned col, unsigned waldo);
+		void addArrow(Direction arrow, unsigned row, unsigned col, unsigned waldo);
 		void popAtom(Atom* root, unsigned row, unsigned col);
 		void dropAtom(Atom* roow, unsigned row, unsigned col);
+		void bond();
 		//ACCESSORS
 		unsigned getNumCols() const { return w; }
 		unsigned getNumRows() const { return h; }

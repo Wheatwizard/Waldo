@@ -80,7 +80,7 @@ void Board::addInstruction(const Instruction& inst, unsigned row, unsigned col, 
 	// TODO call setInstruction on board[i][j]
 }
 
-void Board::addArrow(Arrow arrow, unsigned row, unsigned col, unsigned waldo) {
+void Board::addArrow(Direction arrow, unsigned row, unsigned col, unsigned waldo) {
 	if (!positionOnBoard(row, col)) throw std::out_of_range("row, col");
 	board[row][col].setArrow(waldo, arrow);
 }
@@ -88,4 +88,12 @@ void Board::addArrow(Arrow arrow, unsigned row, unsigned col, unsigned waldo) {
 Waldo& Board::getWaldo(unsigned index) { 
 	assert(index < waldo_num);
 	return waldos[index];
+}
+
+void Board::bond() {
+	for (unsigned r = 0; r < getNumRows(); ++r) {
+		for (unsigned c = 0; c < getNumCols(); ++c) {
+			board[r][c].bond(*this, r, c);
+		}
+	}
 }
