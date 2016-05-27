@@ -4,6 +4,18 @@
 
 //INSTRUCTIONS
 
+void Waldo::sync(Board& board) {
+	bool unsync = false;
+	for ( unsigned i = 0; i < board.getNumWaldos(); ++i ) {
+		Waldo& waldo = board.getWaldo(i);
+		if (waldo.paused) {
+			unsync = true;
+			waldo.paused = false;
+		}
+	}
+	this->paused = !unsync;
+}
+
 void Waldo::drop() {
 	holding = NULL;
 }
@@ -48,6 +60,7 @@ void Waldo::move(Board& board) {
 }
 
 void Waldo::move(Board& board, Direction direction) {
+	if (paused) return;
 	int dr = 0, dc = 0;
 	switch (direction) {
 		case DOWN :

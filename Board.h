@@ -25,6 +25,8 @@ class Board {
 		//ACCESSORS
 		unsigned getNumCols() const { return w; }
 		unsigned getNumRows() const { return h; }
+		unsigned getNumWaldos() const { return waldo_num; }
+		Waldo& getWaldo(unsigned index);
 		//OPERATORS
 		Tile* operator[] (unsigned index) {
 			assert(index < getNumRows());

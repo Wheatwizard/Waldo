@@ -2,6 +2,8 @@
 
 #include <stdexcept>
 
+
+
 Board::Board(unsigned width, unsigned height, unsigned num_waldos)
 	: w(width), h(height), waldo_num(num_waldos), board(new Tile*[height]),
 	  waldos(new Waldo[num_waldos]) {
@@ -81,4 +83,9 @@ void Board::addInstruction(const Instruction& inst, unsigned row, unsigned col, 
 void Board::addArrow(Arrow arrow, unsigned row, unsigned col, unsigned waldo) {
 	if (!positionOnBoard(row, col)) throw std::out_of_range("row, col");
 	board[row][col].setArrow(waldo, arrow);
+}
+
+Waldo& Board::getWaldo(unsigned index) { 
+	assert(index < waldo_num);
+	return waldos[index];
 }

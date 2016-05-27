@@ -28,6 +28,7 @@ class Waldo {
 		void drop();
 		void grabDrop(Board& board);
 		void rotate(Board& board, bool direction);
+		void sync(Board& board);
 	private:
 		std::string name;
 		unsigned r, c, priority;
