@@ -58,8 +58,8 @@ Bond function for individual tile
 */
 
 void Tile::bond(Board& board, unsigned row, unsigned col) {
-	if (mat != BOND) return;
-	if (row > 0 && board[row-1][col].mat == BOND) {
+	if (mat != BONDER) return;
+	if (row > 0 && board[row-1][col].mat == BONDER) {
 		Bond& bond = atom->getBond(UP);
 		if (bond.getAtom()) {
 			++bond;
@@ -67,7 +67,7 @@ void Tile::bond(Board& board, unsigned row, unsigned col) {
 			bond.setAtom(board[row-1][col].getAtom());
 		}
 	}
-	if (row+1 < board.getNumRows() && board[row+1][col].mat == BOND) {
+	if (row+1 < board.getNumRows() && board[row+1][col].mat == BONDER) {
 		Bond& bond = atom->getBond(DOWN);
 		if (bond.getAtom()) {
 			++bond;
@@ -75,7 +75,7 @@ void Tile::bond(Board& board, unsigned row, unsigned col) {
 			bond.setAtom(board[row+1][col].getAtom());
 		}
 	}
-	if (col > 0 && board[row][col-1].mat == BOND) {
+	if (col > 0 && board[row][col-1].mat == BONDER) {
 		Bond& bond = atom->getBond(LEFT);
 		if (bond.getAtom()) {
 			++bond;
@@ -83,7 +83,7 @@ void Tile::bond(Board& board, unsigned row, unsigned col) {
 			bond.setAtom(board[row][col-1].getAtom());
 		}
 	}
-	if (col+1 < board.getNumCols() && board[row][col+1].mat == BOND) {
+	if (col+1 < board.getNumCols() && board[row][col+1].mat == BONDER) {
 		Bond& bond = atom->getBond(RIGHT);
 		if (bond.getAtom()) {
 			++bond;
@@ -94,26 +94,26 @@ void Tile::bond(Board& board, unsigned row, unsigned col) {
 }
 
 void Tile::debond(Board& board, unsigned row, unsigned col) {
-	if (mat != BOND) return;
-	if (row > 0 && board[row-1][col].mat == BOND) {
+	if (mat != BONDER) return;
+	if (row > 0 && board[row-1][col].mat == BONDER) {
 		Bond& bond = atom->getBond(UP);
 		if (bond.getAtom()) {
 			--bond;
 		}
 	}
-	if (row+1 < board.getNumRows() && board[row+1][col].mat == BOND) {
+	if (row+1 < board.getNumRows() && board[row+1][col].mat == BONDER) {
 		Bond& bond = atom->getBond(DOWN);
 		if (bond.getAtom()) {
 			--bond;
 		}
 	}
-	if (col > 0 && board[row][col-1].mat == BOND) {
+	if (col > 0 && board[row][col-1].mat == BONDER) {
 		Bond& bond = atom->getBond(LEFT);
 		if (bond.getAtom()) {
 			--bond;
 		}
 	}
-	if (col+1 < board.getNumCols() && board[row][col+1].mat == BOND) {
+	if (col+1 < board.getNumCols() && board[row][col+1].mat == BONDER) {
 		Bond& bond = atom->getBond(RIGHT);
 		if (bond.getAtom()) {
 			--bond;

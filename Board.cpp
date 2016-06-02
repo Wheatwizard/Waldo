@@ -28,7 +28,8 @@ bool Board::positionOnBoard(unsigned row, unsigned col) const {
 }
 
 void Board::handleInstruction(unsigned waldo) {
-	Instruction instr = board[waldos[i].getRow()][waldos[i].getCol()].getInstruction(i);
+	Waldo& cur_waldo = waldos[waldo];
+	Instruction instr = board[cur_waldo.getRow()][cur_waldo.getCol()].getInstruction(waldo);
 	switch(instr) {
 		case BOND:
 			bond();
@@ -43,22 +44,22 @@ void Board::handleInstruction(unsigned waldo) {
 			// TODO
 			break;
 		case GRAB:
-			waldos[i].grab(*this);
+			cur_waldo.grab(*this);
 			break;
 		case DROP:
-			waldos[i].drop();
+			cur_waldo.drop();
 			break;
 		case GRAB_DROP:
-			waldos[i].grabDrop(*this);
+			cur_waldo.grabDrop(*this);
 			break;
 		case ROTATE_CW:
-			waldos[i].rotate(*this, false);
+			cur_waldo.rotate(*this, false);
 			break;
 		case ROTATE_CCW:
-			waldos[i].rotate(*this, true);
+			cur_waldo.rotate(*this, true);
 			break;
 		case SYNC:
-			waldos[i].sync(*this);
+			cur_waldo.sync(*this);
 			break;
 		default:
 			throw 1000000000;
@@ -113,7 +114,7 @@ void Board::dropAtom(Atom* root, unsigned row, unsigned col) {
 	}
 }
 
-void Board::addInstruction(const Instruction& inst, unsigned row, unsigned col, unsigned waldo) {
+void Board::addInstruction(Instruction inst, unsigned row, unsigned col, unsigned waldo) {
 	if (!positionOnBoard(row, col)) throw std::out_of_range("row, col");
 	// TODO call setInstruction on board[i][j]
 }

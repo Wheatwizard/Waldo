@@ -4,15 +4,18 @@
 #include <cassert>
 #include <stdexcept>
 
-#include "Instruction.h"
 #include "Atom.h"
 
 //forward declare board
 class Board;
 
+enum Instruction { NO_INSTRUCTION = 0,
+	BOND, DEBOND, FUSE, FISS, GRAB, DROP, GRAB_DROP, ROTATE_CW, ROTATE_CCW, SYNC
+};
+
 #include "Board.h"
 
-enum Mat { NO_MAT = 0, BOND };
+enum Mat { NO_MAT = 0, BONDER };
 
 /*
 This class is for the tiles that make up the board

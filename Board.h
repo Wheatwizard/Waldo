@@ -23,7 +23,7 @@ class Board {
 		~Board();
 		bool positionOnBoard(unsigned row, unsigned col) const;
 		void advance();
-		void addInstruction(const Instruction& inst, unsigned row, unsigned col, unsigned waldo);
+		void addInstruction(Instruction inst, unsigned row, unsigned col, unsigned waldo);
 		void addArrow(Direction arrow, unsigned row, unsigned col, unsigned waldo);
 		void popAtom(Atom* root, unsigned row, unsigned col);
 		void dropAtom(Atom* root, unsigned row, unsigned col);
