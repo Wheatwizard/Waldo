@@ -24,7 +24,8 @@ Bond Bond::operator++(int) {
 
 Bond& Bond::operator--() {
 	if (strength > 0) {
-		++strength;
+		--strength;
+		update();
 	}
 	return *this;
 }
@@ -32,7 +33,8 @@ Bond& Bond::operator--() {
 Bond Bond::operator--(int) {
 	if (strength > 0) {
 		Bond copy(*this);
-		++strength;
+		--strength;
+		update();
 		return copy;
 	}
 	return *this;
