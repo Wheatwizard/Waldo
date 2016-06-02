@@ -27,6 +27,44 @@ bool Board::positionOnBoard(unsigned row, unsigned col) const {
 	return row < h && col < w;
 }
 
+void Board::handleInstruction(unsigned waldo) {
+	Instruction instr = board[waldos[i].getRow()][waldos[i].getCol()].getInstruction(i);
+	switch(instr) {
+		case BOND:
+			bond();
+			break;
+		case DEBOND:
+			debond();
+			break;
+		case FUSE:
+			// TODO
+			break;
+		case FISS:
+			// TODO
+			break;
+		case GRAB:
+			waldos[i].grab(*this);
+			break;
+		case DROP:
+			waldos[i].drop();
+			break;
+		case GRAB_DROP:
+			waldos[i].grabDrop(*this);
+			break;
+		case ROTATE_CW:
+			waldos[i].rotate(*this, false);
+			break;
+		case ROTATE_CCW:
+			waldos[i].rotate(*this, true);
+			break;
+		case SYNC:
+			waldos[i].sync(*this);
+			break;
+		default:
+			throw 1000000000;
+	}
+}
+
 void Board::advance() {
 	//Iterate through the waldos in priority order 
 	for (unsigned i = 0; i < waldo_num; ++i) {
@@ -35,7 +73,7 @@ void Board::advance() {
 		//Redirect
 		waldos[i].setDirection(board[waldos[i].getRow()][waldos[i].getCol()].getArrow(i));
 		//Perform instruction
-		//TODO
+		handleInstruction(i);
 	}
 }
 
@@ -94,6 +132,14 @@ void Board::bond() {
 	for (unsigned r = 0; r < getNumRows(); ++r) {
 		for (unsigned c = 0; c < getNumCols(); ++c) {
 			board[r][c].bond(*this, r, c);
+		}
+	}
+}
+
+void Board::debond() {
+	for (unsigned r = 0; r < getNumRows(); ++r) {
+		for (unsigned c = 0; c < getNumCols(); ++c) {
+			board[r][c].debond(*this, r, c);
 		}
 	}
 }

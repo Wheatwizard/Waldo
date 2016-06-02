@@ -16,6 +16,8 @@ class Board {
 		unsigned w, h, waldo_num;
 		Tile** board;
 		Waldo* waldos;
+
+		void handleInstruction(unsigned waldo);
 	public:
 		Board(unsigned width, unsigned height, unsigned num_waldos);
 		~Board();
@@ -24,8 +26,9 @@ class Board {
 		void addInstruction(const Instruction& inst, unsigned row, unsigned col, unsigned waldo);
 		void addArrow(Direction arrow, unsigned row, unsigned col, unsigned waldo);
 		void popAtom(Atom* root, unsigned row, unsigned col);
-		void dropAtom(Atom* roow, unsigned row, unsigned col);
+		void dropAtom(Atom* root, unsigned row, unsigned col);
 		void bond();
+		void debond();
 		//ACCESSORS
 		unsigned getNumCols() const { return w; }
 		unsigned getNumRows() const { return h; }
