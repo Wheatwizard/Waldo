@@ -29,7 +29,9 @@ bool Board::positionOnBoard(unsigned row, unsigned col) const {
 
 void Board::handleInstruction(unsigned waldo) {
 	Waldo& cur_waldo = waldos[waldo];
-	Instruction instr = board[cur_waldo.getRow()][cur_waldo.getCol()].getInstruction(waldo);
+	//Instruction instr = board[cur_waldo.getRow()][cur_waldo.getCol()].getInstruction(waldo);
+	//Temporary
+	InstructionClass instr = BOND;
 	switch(instr) {
 		case BOND:
 			bond();

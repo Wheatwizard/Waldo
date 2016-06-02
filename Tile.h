@@ -9,13 +9,9 @@
 //forward declare board
 class Board;
 
-enum Instruction { NO_INSTRUCTION = 0,
-	BOND, DEBOND, FUSE, FISS, GRAB, DROP, GRAB_DROP, ROTATE_CW, ROTATE_CCW, SYNC
-};
-
 #include "Board.h"
 
-enum Mat { NO_MAT = 0, BONDER };
+#include "Enums.h"
 
 /*
 This class is for the tiles that make up the board

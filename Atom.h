@@ -6,8 +6,7 @@ class Bond;
 
 #include "Bond.h"
 
-
-enum atom_variety {TRADITIONAL, ADVANCED};
+#include "Enums.h"
 
 /*
 Waldo stores its data in atoms.

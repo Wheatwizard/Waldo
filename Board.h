@@ -1,6 +1,8 @@
 #ifndef __board_h_
 #define __board_h_
 
+#include "Instruction.h"
+
 //forward declare Tile
 class Tile;
 

@@ -4,7 +4,7 @@
 //forward declare Atom
 class Atom;
 
-enum Direction {NO_DIRECTION = 0, RIGHT, UP, LEFT, DOWN};
+#include "Enums.h"
 
 class Bond {
 	public:
