@@ -92,3 +92,31 @@ void Tile::bond(Board& board, unsigned row, unsigned col) {
 		}
 	}
 }
+
+void Tile::debond(Board& board, unsigned row, unsigned col) {
+	if (mat != BOND) return;
+	if (row > 0 && board[row-1][col].mat == BOND) {
+		Bond& bond = atom->getBond(UP);
+		if (bond.getAtom()) {
+			--bond;
+		}
+	}
+	if (row+1 < board.getNumRows() && board[row+1][col].mat == BOND) {
+		Bond& bond = atom->getBond(DOWN);
+		if (bond.getAtom()) {
+			--bond;
+		}
+	}
+	if (col > 0 && board[row][col-1].mat == BOND) {
+		Bond& bond = atom->getBond(LEFT);
+		if (bond.getAtom()) {
+			--bond;
+		}
+	}
+	if (col+1 < board.getNumCols() && board[row][col+1].mat == BOND) {
+		Bond& bond = atom->getBond(RIGHT);
+		if (bond.getAtom()) {
+			--bond;
+		}
+	}
+}
