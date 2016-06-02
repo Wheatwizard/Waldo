@@ -16,6 +16,7 @@ class Waldo {
 		Waldo(const std::string& waldo_name, unsigned row, unsigned col);
 		void initialize(const std::string& waldo_name, unsigned row, unsigned col);
 		//ACCESSORS
+		/* Unique for all Waldos */
 		unsigned getPriority() const { return priority; }
 		unsigned getRow() const { return r; }
 		unsigned getCol() const { return c; }
@@ -27,6 +28,7 @@ class Waldo {
 		void grab(Board& board);
 		void drop();
 		void grabDrop(Board& board);
+		/* for CCW direction is true otherwise CW */
 		void rotate(Board& board, bool direction);
 		void sync(Board& board);
 	private:

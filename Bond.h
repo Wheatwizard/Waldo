@@ -4,7 +4,7 @@
 //forward declare Atom
 class Atom;
 
-enum Direction {NO_DIRECTION = 0, LEFT, UP, RIGHT, DOWN};
+enum Direction {NO_DIRECTION = 0, RIGHT, UP, LEFT, DOWN};
 
 class Bond {
 	public:
