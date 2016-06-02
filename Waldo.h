@@ -29,7 +29,7 @@ class Waldo {
 		void drop();
 		void grabDrop(Board& board);
 		/* for CCW direction is true otherwise CW */
-		void rotate(Board& board, bool direction);
+		void rotate(Board& board, Rotation direction);
 		void sync(Board& board);
 	private:
 		std::string name;

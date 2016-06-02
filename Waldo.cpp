@@ -87,7 +87,7 @@ void Waldo::move(Board& board, Direction direction) {
 	board.dropAtom(holding, r, c);
 }
 
-void Waldo::rotate(Board& board, bool direction) {
+void Waldo::rotate(Board& board, Rotation direction) {
 	//Pop the current molecule off the board
 	board.popAtom(holding, r, c);
 	//Rotate the molecule

@@ -10,7 +10,7 @@ Atom Atom::operator+(Atom& other) const {
 	}
 }
 
-void Atom::roll(bool direction) {
+void Atom::roll(Rotation direction) {
 	Bond bonds_copy[4];
 	unsigned diff = 3;
 	if (direction) {
@@ -24,7 +24,7 @@ void Atom::roll(bool direction) {
 	}
 }
 
-void Atom::rotate(bool direction) {
+void Atom::rotate(Rotation direction) {
 	//I think there might be a better way to do this algorithm
 	//Roll this (the root)
 	roll(direction);

@@ -26,9 +26,8 @@ class Atom {
 		Bond& getBond(Direction direction) { return bonds[direction]; }
 		Bond& getBond(unsigned  direction) { return bonds[direction]; }
 		//MODIFIERS
-		/* true is CCW false is CW */
-		void roll(bool direction);
-		void rotate(bool direction);
+		void roll(Rotation direction);
+		void rotate(Rotation direction);
 	private:
 		void cleanBonds();
 	private:

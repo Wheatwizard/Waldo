@@ -29,10 +29,8 @@ bool Board::positionOnBoard(unsigned row, unsigned col) const {
 
 void Board::handleInstruction(unsigned waldo) {
 	Waldo& cur_waldo = waldos[waldo];
-	//Instruction instr = board[cur_waldo.getRow()][cur_waldo.getCol()].getInstruction(waldo);
-	//Temporary
-	InstructionClass instr = BOND;
-	switch(instr) {
+	Instruction instr = board[cur_waldo.getRow()][cur_waldo.getCol()].getInstruction(waldo);
+	switch(instr.getVariety()) {
 		case BOND:
 			bond();
 			break;
@@ -54,11 +52,8 @@ void Board::handleInstruction(unsigned waldo) {
 		case GRAB_DROP:
 			cur_waldo.grabDrop(*this);
 			break;
-		case ROTATE_CW:
-			cur_waldo.rotate(*this, false);
-			break;
-		case ROTATE_CCW:
-			cur_waldo.rotate(*this, true);
+		case ROTATE:
+			cur_waldo.rotate(*this, instr.getRotation());
 			break;
 		case SYNC:
 			cur_waldo.sync(*this);
