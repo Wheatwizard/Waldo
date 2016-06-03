@@ -31,6 +31,8 @@ void Board::handleInstruction(unsigned waldo) {
 	Waldo& cur_waldo = waldos[waldo];
 	Instruction instr = board[cur_waldo.getRow()][cur_waldo.getCol()].getInstruction(waldo);
 	switch(instr.getVariety()) {
+		case NO_INSTRUCTION:
+			break;
 		case BOND:
 			bond();
 			break;
@@ -64,14 +66,15 @@ void Board::handleInstruction(unsigned waldo) {
 }
 
 void Board::advance() {
+	if (init_waldos != waldo_num) throw 7;
 	//Iterate through the waldos in priority order 
 	for (unsigned i = 0; i < waldo_num; ++i) {
-		//Move the Waldo
-		waldos[i].move(*this);
 		//Redirect
 		waldos[i].setDirection(board[waldos[i].getRow()][waldos[i].getCol()].getArrow(i));
 		//Perform instruction
 		handleInstruction(i);
+		//Move the Waldo
+		waldos[i].move(*this);
 	}
 }
 
@@ -109,6 +112,12 @@ void Board::dropAtom(Atom* root, unsigned row, unsigned col) {
 			dropAtom(root->getBond(LEFT).getAtom(), row, col-1);
 		}
 	}
+}
+
+void Board::addWaldo(const std::string& name, unsigned row, unsigned col) {
+	if (init_waldos == waldo_num) throw 8;
+	waldos[init_waldos].initialize(name, row, col);
+	++init_waldos;
 }
 
 void Board::addInstruction(Instruction inst, unsigned row, unsigned col, unsigned waldo) {

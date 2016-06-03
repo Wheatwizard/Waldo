@@ -15,7 +15,7 @@ class Waldo;
 
 class Board {
 	private:
-		unsigned w, h, waldo_num;
+		unsigned w, h, waldo_num, init_waldos;
 		Tile** board;
 		Waldo* waldos;
 
@@ -25,6 +25,7 @@ class Board {
 		~Board();
 		bool positionOnBoard(unsigned row, unsigned col) const;
 		void advance();
+		void addWaldo(const std::string& name, unsigned row, unsigned col);
 		void addInstruction(Instruction inst, unsigned row, unsigned col, unsigned waldo);
 		void addArrow(Direction arrow, unsigned row, unsigned col, unsigned waldo);
 		void popAtom(Atom* root, unsigned row, unsigned col);
