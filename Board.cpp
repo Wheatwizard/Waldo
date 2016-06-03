@@ -60,6 +60,12 @@ void Board::handleInstruction(unsigned waldo) {
 		case SYNC:
 			cur_waldo.sync(*this);
 			break;
+		case FLIP_FLOP:
+			if (instr.isActive()) {
+				cur_waldo.setDirection(instr.getDirection());
+			}
+			instr.flip();
+			break;
 		default:
 			throw 1000000000;
 	}
