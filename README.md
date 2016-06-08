@@ -1,10 +1,10 @@
 # Waldo
-Waldo is an esoteric programming language based on the game Spacechem (http://www.zachtronics.com/spacechem/).
+Waldo is an esoteric programming language based on the game [Spacechem](http://www.zachtronics.com/spacechem/).
 
 How it works
 ------------
 
-Waldo is a language driven by <Insert thing here> called Waldos.  Waldos move about a board covered in arrows, atoms, instructions, mats.
+Waldo is a language driven by remote manipulators called Waldos.  Waldos move about a board covered in arrows, atoms, instructions, mats.
 
 ###Arrows
 Arrows tell Waldos how to move.  Each arrow is asigned to a specific Waldo and can only interact with that Waldo.  When a Waldo occupies the same square as an arrow it takes on the direction of the arrow.  Waldos will maintain direction when not in the presence of an arrow.
@@ -14,9 +14,10 @@ Atoms are how data are stored in the board.  Atoms can be grabbed by a Waldo. On
 
 
 Atoms can cause Reactor Errors.  This occurs when:
-*Atoms occupy the same square
-*An atom attempts to occupy a square not on the board
-*Two Waldos attempt to move the same atom in different directions
+
+ * Atoms occupy the same square
+ * An atom attempts to occupy a square not on the board
+ * Two Waldos attempt to move the same atom in different directions
 
 ###Instructions
 Instructions perform an action when the corresponding Waldo passes over them.  Like arrows each instruction is specific to its Waldo.
@@ -55,11 +56,50 @@ Sync:
 This instruction will cause the current Waldo to stop moving if no other Waldos are on a sync instruction.  If other Waldos are on a sync instruction the current Waldo will continue to move in the direction it has been moving and all other Waldos on a sync instruction will begin to move in the direction they were moving before they encountered the sync instruction.
 
 
+Bond:
+
+
+Bond comes in two varieties Bond+ and Bond-.  See Bonding mat for details.
+
+
+Flip/flop:
+
+
+A flip/flop instruction holds a direction. A flip/flop instruction can redirect a Waldo as if it were an arrow.  Flip/flop instructions can be active of inactive.  They will change their activity when passed over by a Waldo.  If the flip/flop instruction is active when it is passed over it will impart its direction unto the Waldo. If it is inactive it will do nothing.  Flip/flop redirections take precedent over arrow redirects (i.e. if there is an arrow and an active flip/flop in the same square the Waldo will be redirected by the flip/flop and ignore the arrow).  Flip/flop instructions will be active at cycle 0.
+
+
 More instructions will be added to this list when their function is clearly defined
 
 ###Mats
 
-This list will be completed when Mats are fully or partially implemented.
+There will be between 4 and 5 mats.  Only one mat can occupy a space at a time. Mats are not specific to a Waldo.
+
+
+Bonding:
+
+
+When a Bond+ instruction is activated on the board adjacent atoms will increase the number of bonds between them as long as they are both on a bonding map.
+When a Bond- instruction is activated on the board adjacent atoms will decrease the number of bonds between them as long as they are both on a bonding map.
+
+
+Fusion:
+
+
+Not yet implemented
+
+
+Fission:
+
+
+Not yet implemented
+
+
+Sensor:
+
+
+Not yet implemented
+
+
 
 Writing in Waldo
 ----------------
