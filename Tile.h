@@ -35,6 +35,7 @@ class Tile {
 		void removeAtom();
 		void bond(Board& board, unsigned row, unsigned col);
 		void debond(Board& board, unsigned row, unsigned col);
+		void setMat(Mat mat);
 	private:
 		unsigned waldos;
 		Direction* arrows;

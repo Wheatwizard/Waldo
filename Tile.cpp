@@ -124,3 +124,12 @@ void Tile::debond(Board& board, unsigned row, unsigned col) {
 		}
 	}
 }
+
+
+void Tile::setMat(Mat mat) {
+	if (!this->mat) {
+		this->mat = mat;
+	} else {
+		throw 15;
+	}
+}

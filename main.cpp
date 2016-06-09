@@ -14,6 +14,13 @@ int main(int argc, char** argv) {
 	b.addArrow(DOWN, 0, 9, 0);
 	b.addArrow(LEFT, 9, 9, 0);
 	b.addArrow(UP, 9, 0, 0);
+	b.addInstruction(Instruction(BOND),0,1,0);
+	b[1][1].setMat(BONDER);
+	b[1][2].setMat(BONDER);
+	Atom* one = new Atom(TRADITIONAL, 1);
+	Atom* two = new Atom(TRADITIONAL, 1);	
+	b[1][1].addAtom(one);
+	b[1][2].addAtom(two);
 	while (true) {
 		b.advance();
 	}
