@@ -49,3 +49,25 @@ void Atom::cleanBonds() {
 		bonds[i].update();
 	}
 }
+
+/*
+Removes all the bonds to and from this atom
+*/
+
+void Atom::unbond() {
+	//Iterate through all the bonds
+	for (unsigned i = 0; i < 4; ++i) {
+		//Zero out the bond
+		while (bonds[i].isValid()) {
+			--bonds[i];
+		}
+		//Zero out the complement of the bond
+		while (bonds[i].getAtom()->bonds[(i+2)%4].isValid()) {
+			--bonds[i].getAtom()->bonds[(i+2)%4];
+		}
+		//Tell the conected atom to clean itself
+		bonds[i].getAtom()->cleanBonds();
+	}
+	//Clean this atom
+	this->cleanBonds();
+}

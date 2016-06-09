@@ -129,6 +129,9 @@ void Tile::debond(Board& board, unsigned row, unsigned col) {
 void Tile::setMat(Mat mat) {
 	if (!this->mat) {
 		this->mat = mat;
+		if (mat == FUSOR) {
+			//Add a mat to the tile on the right
+		}
 	} else {
 		throw 15;
 	}

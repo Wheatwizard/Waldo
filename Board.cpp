@@ -170,3 +170,25 @@ void Board::debond() {
 		}
 	}
 }
+
+void Board::fuse() {
+	for (unsigned r = 0; r < getNumRows(); ++r) {
+		for (unsigned c = 0; c < getNumCols()-1; ++c) {
+			if (board[r][c].getMat() == FUSOR) {
+				if (board[r][c+1].getMat() == TARGET) {
+					//Fuse the Atom to the right
+					if (board[r][c].getAtom()) {
+						board[r][c].getAtom()->unbond();
+						Atom newAtom = *board[r][c+1].getAtom() + *board[r][c].getAtom();
+						delete board[r][c].getAtom();
+						delete board[r][c+1].getAtom();
+						board[r][c+1].addAtom(NULL);
+						board[r][c+1].addAtom(&newAtom);
+					}
+				} else {
+					throw 16;
+				}
+			}
+		}
+	}
+}

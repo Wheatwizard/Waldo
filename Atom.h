@@ -21,14 +21,15 @@ class Atom {
 	public:
 		Atom(atom_variety variety,unsigned val) : type(variety), value(val) {};
 		unsigned getValue() const { return value; }
-		Atom operator+(Atom& other) const;
 		//ACCESSORS
 		Bond& getBond(Direction direction) { return bonds[direction]; }
 		Bond& getBond(unsigned  direction) { return bonds[direction]; }
 		//MODIFIERS
 		void roll(Rotation direction);
 		void rotate(Rotation direction);
+		void unbond();
 		//OPERATOS
+		Atom operator+(Atom& other) const;
 		bool operator==(Atom other) const {
 			return this->value == other.value;
 		}

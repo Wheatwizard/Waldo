@@ -33,6 +33,7 @@ class Board {
 		void dropAtom(Atom* root, unsigned row, unsigned col);
 		void bond();
 		void debond();
+		void fuse();
 		//ACCESSORS
 		unsigned getNumCols() const { return w; }
 		unsigned getNumRows() const { return h; }
