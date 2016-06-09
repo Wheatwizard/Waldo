@@ -74,11 +74,17 @@ Sense:
 A Sense instruction has a direction and an atom value.  When a waldo passes over a Sense instruction it will take the direction of the Sense instruction iff the atom corresponding to the value of the sense instruction is the same as the atom on the Sensor mat.  Like the Flip/flop instruction the redirection of the Sense instruction takes precedence over an arrow.
 
 
+Fuse:
+
+
+A Fuse instruction will cause any atom on a Fusion mat to be destroyed and its value added to a atom on a target mat to the right of the Fusion mat if such a mat has an atom on it as well.  All bonds to the atom on the fusion mat will cease to exist and all bonds to the atom on the target mat will remain.
+
+
 More instructions will be added to this list when their function is clearly defined
 
 ###Mats
 
-There will be between 4 and 5 mats.  Only one mat can occupy a space at a time. Mats are not specific to a Waldo.
+There will be between 5 and 6 mats.  Only one mat can occupy a space at a time. Mats are not specific to a Waldo.
 
 
 Bonding:
@@ -91,13 +97,19 @@ When a Bond- instruction is activated on the board adjacent atoms will decrease 
 Fusion:
 
 
-Not yet implemented
+A fusion mat causes an atom in its tile to be combined with an atom on a target mat to the right when a Fuse instruction is activated by a Waldo.
 
 
 Fission:
 
 
 Not yet implemented
+
+
+Target:
+
+
+A Target mat is a mat always to the right of a fusion mat and is the location of the final result of a fuse instruction.
 
 
 Sensor:
