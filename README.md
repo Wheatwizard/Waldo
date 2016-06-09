@@ -68,6 +68,12 @@ Flip/flop:
 A flip/flop instruction holds a direction. A flip/flop instruction can redirect a Waldo as if it were an arrow.  Flip/flop instructions can be active or inactive.  They will change their activity when passed over by a Waldo.  If the flip/flop instruction is active when it is passed over it will impart its direction unto the Waldo. If it is inactive it will do nothing.  Flip/flop redirections take precedent over arrow redirects (i.e. if there is an arrow and an active flip/flop in the same square the Waldo will be redirected by the flip/flop and ignore the arrow).  Flip/flop instructions will be active at cycle 0.
 
 
+Sense:
+
+
+A Sense instruction has a direction and an atom value.  When a waldo passes over a Sense instruction it will take the direction of the Sense instruction iff the atom corresponding to the value of the sense instruction is the same as the atom on the Sensor mat.  Like the Flip/flop instruction the redirection of the Sense instruction takes precedence over an arrow.
+
+
 More instructions will be added to this list when their function is clearly defined
 
 ###Mats
@@ -97,7 +103,7 @@ Not yet implemented
 Sensor:
 
 
-Not yet implemented
+There may only be one sensor mat in a reactor.  Sensor mats are used to create conditional pathing.  (See Sense instruction)
 
 
 
