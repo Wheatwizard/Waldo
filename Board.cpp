@@ -5,8 +5,8 @@
 
 
 Board::Board(unsigned width, unsigned height, unsigned num_waldos)
-	: w(width), h(height), waldo_num(num_waldos), board(new Tile*[height]),
-	  waldos(new Waldo[num_waldos]) {
+	: w(width), h(height), waldo_num(num_waldos), sensorx(height+1), sensory(width+1),
+	   board(new Tile*[height]), waldos(new Waldo[num_waldos]) {
 	for (unsigned i = 0; i < height; ++i) {
 		board[i] = new Tile[width];
 		for (unsigned j = 0; j < width; ++j) {
@@ -65,6 +65,20 @@ void Board::handleInstruction(unsigned waldo) {
 				cur_waldo.setDirection(instr.getDirection());
 			}
 			instr.flip();
+			break;
+		case SENSE:
+			//Check that the sensor location is proper
+			//Will be improper when unitialized
+			if (!positionOnBoard(sensorx, sensory)) {throw 14;}
+
+			//Check that there is a mat at the location
+			if (board[sensorx][sensory].getMat() == SENSOR) {break;}
+
+			//Check that the right atom is on the mat
+			if (board[sensorx][sensory].getAtom() &&
+			   *board[sensorx][sensory].getAtom() == instr.getAtom()) {
+				cur_waldo.setDirection(instr.getDirection());
+			}
 			break;
 		default:
 			throw 1000000000;

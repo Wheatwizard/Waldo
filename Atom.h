@@ -28,6 +28,13 @@ class Atom {
 		//MODIFIERS
 		void roll(Rotation direction);
 		void rotate(Rotation direction);
+		//OPERATOS
+		bool operator==(Atom other) const {
+			return this->value == other.value;
+		}
+		bool operator==(unsigned other) const {
+			return this->value == other;
+		}
 	private:
 		void cleanBonds();
 	private:

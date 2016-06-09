@@ -33,6 +33,10 @@ Atom* Tile::getAtom() const {
 	return this->atom;
 }
 
+Mat Tile::getMat() const {
+	return mat;
+}
+
 void Tile::setArrow(unsigned waldo, Direction end_state) {
 	assert(waldo < this->waldos);
 	if (arrows[waldo]) {

@@ -15,10 +15,11 @@ class Waldo;
 
 class Board {
 	private:
-		unsigned w, h, waldo_num, init_waldos;
+		unsigned w, h, waldo_num, init_waldos, sensorx, sensory;
 		Tile** board;
 		Waldo* waldos;
-
+		
+		
 		void handleInstruction(unsigned waldo);
 	public:
 		Board(unsigned width, unsigned height, unsigned num_waldos);

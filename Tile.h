@@ -27,6 +27,7 @@ class Tile {
 		Direction getArrow(unsigned waldo) const;
 		Instruction getInstruction(unsigned waldo) const;
 		Atom* getAtom() const;
+		Mat getMat() const;
 		//MODIFIERS
 		void setArrow(unsigned waldo, Direction end_state);
 		void setInstruction();
