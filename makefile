@@ -1,4 +1,4 @@
-objects = main.o Atom.o Board.o Bond.o Tile.o Waldo.o Environment.o
+objects = main.o Atom.o Board.o Bond.o Tile.o Waldo.o Environment.o Sink.o
 CXXFLAGS = -Wall
 
 clangdbg : CXXFLAGS = -O0 -g -Wall
@@ -24,6 +24,9 @@ Bond.o : Bond.h Bond.cpp Atom.h
 
 Environment.o : Environment.h Environment.cpp Board.h
 	$(CXX) -c $(CXXFLAGS) Environment.cpp
+
+Sink.o : Sink.h Sink.cpp SimpleBoard.h
+	$(CXX) -c $(CXXFLAGS) Sink.cpp
 
 Tile.o : Tile.h Tile.cpp Atom.h Instruction.h
 	$(CXX) -c $(CXXFLAGS) Tile.cpp

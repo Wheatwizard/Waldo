@@ -1,10 +1,11 @@
 #include "Board.h"
+#include "Sink.h"
 #include <queue>
 #include <vector>
 
 class Environment {
 	public:
-		Environment() : reactors() {};
+		Environment() : reactors(), sinks() {};
 		~Environment();
 		
 		void advance();
@@ -12,4 +13,5 @@ class Environment {
 		void addBoard(unsigned width, unsigned height, unsigned num_waldos);
 	private:
 		std::vector<Board> reactors;
+		std::vector<Sink>  sinks;
 };
