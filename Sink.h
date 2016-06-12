@@ -1,3 +1,6 @@
+#ifndef __sink_h_
+#define __sink_h_
+
 #include <vector>
 #include <queue>
 
@@ -14,3 +17,5 @@ class Sink {
 	private:
 		std::vector<Pipe*> inputs;
 };
+
+#endif

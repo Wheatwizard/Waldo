@@ -1,3 +1,6 @@
+#ifndef __simpleBoard_h_
+#define __simpleBoard_h_
+
 #include "Atom.h"
 
 /*
@@ -22,3 +25,5 @@ class SimpleBoard {
 		unsigned width, height;
 		Atom*** contents;
 };
+
+#endif

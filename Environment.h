@@ -1,3 +1,6 @@
+#ifndef __environment_h_
+#define __environment_h_
+
 #include "Board.h"
 #include "Sink.h"
 #include <queue>
@@ -15,3 +18,5 @@ class Environment {
 		std::vector<Board> reactors;
 		std::vector<Sink>  sinks;
 };
+
+#endif
