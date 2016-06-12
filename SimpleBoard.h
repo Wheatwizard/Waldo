@@ -6,14 +6,18 @@ It lacks Waldos, instructions, mats, and zones.
 It is made simply to store Atoms while they are moving between reactors
 */
 
-//this class is just a template for the time being
-
 class SimpleBoard {
 	public:
-		SimpleBoard();
+		//CONSTRUCTORS
+		SimpleBoard(unsigned w, unsigned h);
+		SimpleBoard(unsigned w, unsigned h, Atom* root, unsigned rIn, unsigned cIn);
+		~SimpleBoard();
 		//ACCESSORS
 		unsigned getWidth()  const { return width;  }
 		unsigned getHeight() const { return height; }
+		bool compatable(SimpleBoard& other) const;
+		//MODIFIERS
+		void dropAtom(Atom* root, unsigned row, unsigned col);
 	private:
 		unsigned width, height;
 		Atom*** contents;
