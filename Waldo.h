@@ -2,9 +2,9 @@
 #ifndef __waldo_h_
 #define __waldo_h_
 
-//forward declare Board
-class Board;
-#include "Board.h"
+//forward declare Reactor
+class  Reactor;
+#include "Reactor.h"
 
 #include <string>
 #include "Atom.h"
@@ -21,16 +21,16 @@ class Waldo {
 		unsigned getRow() const { return r; }
 		unsigned getCol() const { return c; }
 		//MODIFIERS
-		void move(Board& board);
-		void move(Board& board, Direction direction);
+		void move( Reactor& board);
+		void move( Reactor& board, Direction direction);
 		void setDirection(unsigned end_direction);
 		//INSTRUCTIONS
-		void grab(Board& board);
+		void grab( Reactor& board);
 		void drop();
-		void grabDrop(Board& board);
+		void grabDrop( Reactor& board);
 		/* for CCW direction is true otherwise CW */
-		void rotate(Board& board, Rotation direction);
-		void sync(Board& board);
+		void rotate( Reactor& board, Rotation direction);
+		void sync( Reactor& board);
 	private:
 		std::string name;
 		unsigned r, c, priority;

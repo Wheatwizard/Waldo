@@ -4,12 +4,12 @@ void Environment::advance() {
 	for (unsigned i = 0; i < reactors.size(); ++i) {
 		reactors[i].advance();
 	}
-	for (unsigned i = 0; i < sinks.size(); ++i) {
-		sinks[i].advance();
+	for (unsigned i = 0; i < recyclers.size(); ++i) {
+		recyclers[i].advance();
 	}
 }
 
-void Environment::addBoard(unsigned width, unsigned height, unsigned num_waldos) {
-	reactors.push_back(Board(width, height, num_waldos));
+void Environment::addReactor(unsigned width, unsigned height, unsigned num_waldos) {
+	reactors.push_back( Reactor(width, height, num_waldos));
 }
 

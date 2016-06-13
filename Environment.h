@@ -1,22 +1,22 @@
 #ifndef __environment_h_
 #define __environment_h_
 
-#include "Board.h"
-#include "Sink.h"
+#include "Reactor.h"
+#include "Recycler.h"
 #include <queue>
 #include <vector>
 
 class Environment {
 	public:
-		Environment() : reactors(), sinks() {};
+		Environment() : reactors(), recyclers() {};
 		~Environment();
 		
 		void advance();
 		//MODIFIERS
-		void addBoard(unsigned width, unsigned height, unsigned num_waldos);
+		void addReactor(unsigned width, unsigned height, unsigned num_waldos);
 	private:
-		std::vector<Board> reactors;
-		std::vector<Sink>  sinks;
+		std::vector< Reactor> reactors;
+		std::vector<Recycler>  recyclers;
 };
 
 #endif

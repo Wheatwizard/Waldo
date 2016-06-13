@@ -7,9 +7,9 @@
 #include "Atom.h"
 
 //forward declare board
-class Board;
+class  Reactor;
 
-#include "Board.h"
+#include "Reactor.h"
 
 #include "Enums.h"
 
@@ -33,8 +33,8 @@ class Tile {
 		void setInstruction();
 		void addAtom(Atom* atom);
 		void removeAtom();
-		void bond(Board& board, unsigned row, unsigned col);
-		void debond(Board& board, unsigned row, unsigned col);
+		void bond( Reactor& board, unsigned row, unsigned col);
+		void debond( Reactor& board, unsigned row, unsigned col);
 		void setMat(Mat mat);
 	private:
 		unsigned waldos;

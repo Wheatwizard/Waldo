@@ -4,7 +4,7 @@
 
 //INSTRUCTIONS
 
-void Waldo::sync(Board& board) {
+void Waldo::sync( Reactor& board) {
 	bool unsync = false;
 	for ( unsigned i = 0; i < board.getNumWaldos(); ++i ) {
 		Waldo& waldo = board.getWaldo(i);
@@ -20,11 +20,11 @@ void Waldo::drop() {
 	holding = NULL;
 }
 
-void Waldo::grab(Board& board) {
+void Waldo::grab( Reactor& board) {
 	holding = board[r][c].getAtom();
 }
 
-void Waldo::grabDrop(Board& board) {
+void Waldo::grabDrop( Reactor& board) {
 	if (holding) {
 		drop();
 	} else {
@@ -55,11 +55,11 @@ void Waldo::initialize(const std::string& waldo_name, unsigned row, unsigned col
 	c = col;
 }
 
-void Waldo::move(Board& board) {
+void Waldo::move( Reactor& board) {
 	move(board, facing);
 }
 
-void Waldo::move(Board& board, Direction direction) {
+void Waldo::move( Reactor& board, Direction direction) {
 	if (paused) return;
 	int dr = 0, dc = 0;
 	switch (direction) {
@@ -87,7 +87,7 @@ void Waldo::move(Board& board, Direction direction) {
 	board.dropAtom(holding, r, c);
 }
 
-void Waldo::rotate(Board& board, Rotation direction) {
+void Waldo::rotate( Reactor& board, Rotation direction) {
 	//Pop the current molecule off the board
 	board.popAtom(holding, r, c);
 	//Rotate the molecule

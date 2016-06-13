@@ -1,10 +1,10 @@
-#include "Board.h"
+#include "Reactor.h"
 
 #include <stdexcept>
 
 
 
-Board::Board(unsigned width, unsigned height, unsigned num_waldos)
+ Reactor:: Reactor(unsigned width, unsigned height, unsigned num_waldos)
 	: w(width), h(height), waldo_num(num_waldos), sensorx(height+1), sensory(width+1),
 	   board(new Tile*[height]), waldos(new Waldo[num_waldos]) {
 	for (unsigned i = 0; i < height; ++i) {
@@ -15,7 +15,7 @@ Board::Board(unsigned width, unsigned height, unsigned num_waldos)
 	}
 }
 
-Board::~Board() {
+ Reactor::~ Reactor() {
 	for (unsigned i = 0; i < h; ++i) {
 		delete [] board[i];
 	}
@@ -23,11 +23,11 @@ Board::~Board() {
 	delete [] board;
 }
 
-bool Board::positionOnBoard(unsigned row, unsigned col) const {
+bool Reactor::positionOnBoard(unsigned row, unsigned col) const {
 	return row < h && col < w;
 }
 
-void Board::handleInstruction(unsigned waldo) {
+void Reactor::handleInstruction(unsigned waldo) {
 	Waldo& cur_waldo = waldos[waldo];
 	Instruction instr = board[cur_waldo.getRow()][cur_waldo.getCol()].getInstruction(waldo);
 	switch(instr.getVariety()) {
@@ -42,7 +42,7 @@ void Board::handleInstruction(unsigned waldo) {
 		case FUSE:
 			// TODO
 			break;
-		case FISS:
+		case SPLIT:
 			// TODO
 			break;
 		case GRAB:
@@ -85,7 +85,7 @@ void Board::handleInstruction(unsigned waldo) {
 	}
 }
 
-void Board::advance() {
+void Reactor::advance() {
 	if (init_waldos != waldo_num) throw 7;
 	//Iterate through the waldos in priority order 
 	for (unsigned i = 0; i < waldo_num; ++i) {
@@ -98,7 +98,7 @@ void Board::advance() {
 	}
 }
 
-void Board::popAtom(Atom* root, unsigned row, unsigned col) {
+void Reactor::popAtom(Atom* root, unsigned row, unsigned col) {
 	if (board[row][col].getAtom()) {
 		board[row][col].removeAtom();
 		if (root->getBond(UP).getAtom()) {
@@ -116,7 +116,7 @@ void Board::popAtom(Atom* root, unsigned row, unsigned col) {
 	}
 }
 
-void Board::dropAtom(Atom* root, unsigned row, unsigned col) {
+void Reactor::dropAtom(Atom* root, unsigned row, unsigned col) {
 	if (board[row][col].getAtom() != root) {
 		board[row][col].addAtom(root);
 		if (root->getBond(UP).getAtom()) {
@@ -134,28 +134,28 @@ void Board::dropAtom(Atom* root, unsigned row, unsigned col) {
 	}
 }
 
-void Board::addWaldo(const std::string& name, unsigned row, unsigned col) {
+void Reactor::addWaldo(const std::string& name, unsigned row, unsigned col) {
 	if (init_waldos == waldo_num) throw 8;
 	waldos[init_waldos].initialize(name, row, col);
 	++init_waldos;
 }
 
-void Board::addInstruction(Instruction inst, unsigned row, unsigned col, unsigned waldo) {
+void Reactor::addInstruction(Instruction inst, unsigned row, unsigned col, unsigned waldo) {
 	if (!positionOnBoard(row, col)) throw std::out_of_range("row, col");
 	// TODO call setInstruction on board[i][j]
 }
 
-void Board::addArrow(Direction arrow, unsigned row, unsigned col, unsigned waldo) {
+void Reactor::addArrow(Direction arrow, unsigned row, unsigned col, unsigned waldo) {
 	if (!positionOnBoard(row, col)) throw std::out_of_range("row, col");
 	board[row][col].setArrow(waldo, arrow);
 }
 
-Waldo& Board::getWaldo(unsigned index) { 
+Waldo& Reactor::getWaldo(unsigned index) { 
 	assert(index < waldo_num);
 	return waldos[index];
 }
 
-void Board::bond() {
+void Reactor::bond() {
 	for (unsigned r = 0; r < getNumRows(); ++r) {
 		for (unsigned c = 0; c < getNumCols(); ++c) {
 			board[r][c].bond(*this, r, c);
@@ -163,7 +163,7 @@ void Board::bond() {
 	}
 }
 
-void Board::debond() {
+void Reactor::debond() {
 	for (unsigned r = 0; r < getNumRows(); ++r) {
 		for (unsigned c = 0; c < getNumCols(); ++c) {
 			board[r][c].debond(*this, r, c);
@@ -171,7 +171,7 @@ void Board::debond() {
 	}
 }
 
-void Board::fuse() {
+void Reactor::fuse() {
 	for (unsigned r = 0; r < getNumRows(); ++r) {
 		for (unsigned c = 0; c < getNumCols()-1; ++c) {
 			if (board[r][c].getMat() == FUSOR) {

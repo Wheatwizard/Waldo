@@ -4,7 +4,7 @@
 #include "Atom.h"
 
 /*
-SimpleBoard is an implementation of the Board class designed for use in pipelines
+SimpleBoard is an implementation of the Reactor class designed for use in pipelines
 It lacks Waldos, instructions, mats, and zones.
 It is made simply to store Atoms while they are moving between reactors
 */

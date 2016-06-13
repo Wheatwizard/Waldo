@@ -13,7 +13,7 @@ Arrows tell Waldos how to move.  Each arrow is asigned to a specific Waldo and c
 Atoms are how data are stored in the board.  Atoms can be grabbed by a Waldo. Once grabbed an atom will move with a Waldo until it is dropped.  Atoms can be bonded together with a bond instruction and a bond mat (See instruction and mat).  Bonded atoms will move together if one is grabbed.
 
 
-Atoms can cause Reactor Errors.  This occurs when:
+Atoms can cause  Reactor Errors.  This occurs when:
 
  * Atoms occupy the same square
  * An atom attempts to occupy a square not on the board

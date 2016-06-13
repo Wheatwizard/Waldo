@@ -1,4 +1,4 @@
-objects = main.o Atom.o Board.o Bond.o Tile.o Waldo.o Environment.o Sink.o SimpleBoard.o
+objects = main.o Atom.o  Reactor.o Bond.o Tile.o Waldo.o Environment.o Recycler.o SimpleBoard.o
 CXXFLAGS = -Wall
 
 clangdbg : CXXFLAGS = -O0 -g -Wall
@@ -16,17 +16,17 @@ main.o : main.cpp
 Atom.o : Atom.h Atom.cpp Bond.h
 	$(CXX) -c $(CXXFLAGS) Atom.cpp
 
-Board.o: Board.h Board.cpp Tile.h Waldo.h
-	$(CXX) -c $(CXXFLAGS) Board.cpp
+ Reactor.o:  Reactor.h  Reactor.cpp Tile.h Waldo.h
+	$(CXX) -c $(CXXFLAGS)  Reactor.cpp
 
 Bond.o : Bond.h Bond.cpp Atom.h
 	$(CXX) -c $(CXXFLAGS) Bond.cpp
 
-Environment.o : Environment.h Environment.cpp Board.h
+Environment.o : Environment.h Environment.cpp  Reactor.h
 	$(CXX) -c $(CXXFLAGS) Environment.cpp
 
-Sink.o : Sink.h Sink.cpp SimpleBoard.h
-	$(CXX) -c $(CXXFLAGS) Sink.cpp
+Recycler.o : Recycler.h Recycler.cpp SimpleBoard.h
+	$(CXX) -c $(CXXFLAGS) Recycler.cpp
 
 SimpleBoard.o : SimpleBoard.h SimpleBoard.cpp Atom.h
 	$(CXX) -c $(CXXFLAGS) SimpleBoard.cpp
@@ -34,7 +34,7 @@ SimpleBoard.o : SimpleBoard.h SimpleBoard.cpp Atom.h
 Tile.o : Tile.h Tile.cpp Atom.h Instruction.h
 	$(CXX) -c $(CXXFLAGS) Tile.cpp
 
-Waldo.o : Waldo.h Waldo.cpp Atom.h Board.h Tile.h
+Waldo.o : Waldo.h Waldo.cpp Atom.h  Reactor.h Tile.h
 	$(CXX) -c $(CXXFLAGS) Waldo.cpp
 
 clean :

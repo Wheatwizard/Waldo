@@ -61,7 +61,7 @@ void Tile::removeAtom() {
 Bond function for individual tile
 */
 
-void Tile::bond(Board& board, unsigned row, unsigned col) {
+void Tile::bond( Reactor& board, unsigned row, unsigned col) {
 	if (mat != BONDER) return;
 	if (row > 0 && board[row-1][col].mat == BONDER) {
 		Bond& bond = atom->getBond(UP);
@@ -97,7 +97,7 @@ void Tile::bond(Board& board, unsigned row, unsigned col) {
 	}
 }
 
-void Tile::debond(Board& board, unsigned row, unsigned col) {
+void Tile::debond( Reactor& board, unsigned row, unsigned col) {
 	if (mat != BONDER) return;
 	if (row > 0 && board[row-1][col].mat == BONDER) {
 		Bond& bond = atom->getBond(UP);

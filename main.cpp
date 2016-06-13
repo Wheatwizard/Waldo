@@ -1,13 +1,13 @@
 #include <iostream>
 
-#include "Board.h"
+#include "Reactor.h"
 
 int main(int argc, char** argv) {
 	/*if (argc == 1) {
 		std::cout << argv[0] << " takes 1 argument." << std::endl;
 		std::cout << "Please pass the name of a file to read from." << std::endl;
 	}*/
-	Board b(10, 10, 2);
+	 Reactor b(10, 10, 2);
 	b.addWaldo("red", 0, 0);
 	b.addWaldo("blue", 0, 0);
 	b.addArrow(RIGHT, 0, 0, 0);

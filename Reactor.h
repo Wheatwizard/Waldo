@@ -1,5 +1,5 @@
-#ifndef __board_h_
-#define __board_h_
+#ifndef __reactor_h_
+#define __reactor_h_
 
 #include "Instruction.h"
 
@@ -13,7 +13,7 @@ class Waldo;
 
 #include "Waldo.h"
 
-class Board {
+class  Reactor {
 	private:
 		unsigned w, h, waldo_num, init_waldos, sensorx, sensory;
 		Tile** board;
@@ -22,8 +22,8 @@ class Board {
 		
 		void handleInstruction(unsigned waldo);
 	public:
-		Board(unsigned width, unsigned height, unsigned num_waldos);
-		~Board();
+		 Reactor(unsigned width, unsigned height, unsigned num_waldos);
+		~ Reactor();
 		bool positionOnBoard(unsigned row, unsigned col) const;
 		void advance();
 		void addWaldo(const std::string& name, unsigned row, unsigned col);
@@ -46,4 +46,4 @@ class Board {
 		}
 };
 
-#endif // ifndef __board_h_
+#endif // ifndef __reactor_h_
