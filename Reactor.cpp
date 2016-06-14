@@ -40,7 +40,7 @@ void Reactor::handleInstruction(unsigned waldo) {
 			debond();
 			break;
 		case FUSE:
-			// TODO
+			fuse();
 			break;
 		case SPLIT:
 			// TODO
