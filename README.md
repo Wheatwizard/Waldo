@@ -80,11 +80,22 @@ Fuse:
 A Fuse instruction will cause any atom on a Fusion mat to be destroyed and its value added to a atom on a target mat to the right of the Fusion mat if such a mat has an atom on it as well.  All bonds to the atom on the fusion mat will cease to exist and all bonds to the atom on the target mat will remain.
 
 
+Split:
+
+A Split instruction works similarly to the Fuse instruction.  The Split instruction will cause any atom on a Fission 
+mat to become half of its value and cause an additional atom also of half of the original atoms value to apear on the 
+target mat to the left of the fission mat.  If the value of the atom is divisible by two both atoms will be identical.  
+If not both atoms will have integer values totaling to the value of the original atom such that the atom on the 
+Fission mat has a value one higher than that of the atom on the target mat. 
+
+
 More instructions will be added to this list when their function is clearly defined
 
 ###Mats
 
-There will be between 5 and 6 mats.  Only one mat can occupy a space at a time. Mats are not specific to a Waldo.
+There will be between 5 and 6 mats.  Only one mat can occupy a space at a time. Mats are not specific to a Waldo.  
+Mats cannot perform any actions themselves and serve only to direct instructions that interact with atoms which atoms 
+to interact with.
 
 
 Bonding:
@@ -103,7 +114,8 @@ A fusion mat causes an atom in its tile to be combined with an atom on a target 
 Fission:
 
 
-Not yet implemented
+A Fission mat will cause an atom to be split according to the specifications of the split instruction when it is 
+triggered by a Waldo.
 
 
 Target:

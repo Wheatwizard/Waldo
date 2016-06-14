@@ -43,7 +43,7 @@ void Reactor::handleInstruction(unsigned waldo) {
 			fuse();
 			break;
 		case SPLIT:
-			// TODO
+			split();
 			break;
 		case GRAB:
 			cur_waldo.grab(*this);
@@ -142,7 +142,7 @@ void Reactor::addWaldo(const std::string& name, unsigned row, unsigned col) {
 
 void Reactor::addInstruction(Instruction inst, unsigned row, unsigned col, unsigned waldo) {
 	if (!positionOnBoard(row, col)) throw std::out_of_range("row, col");
-	// TODO call setInstruction on board[i][j]
+	board[row][col].setInstruction(inst, waldo);
 }
 
 void Reactor::addArrow(Direction arrow, unsigned row, unsigned col, unsigned waldo) {
@@ -184,6 +184,33 @@ void Reactor::fuse() {
 						delete board[r][c+1].getAtom();
 						board[r][c+1].addAtom(NULL);
 						board[r][c+1].addAtom(&newAtom);
+					}
+				} else {
+					throw 16;
+				}
+			}
+		}
+	}
+}
+
+void Reactor::split() {
+	for (unsigned r = 0; r < getNumRows(); ++r) {
+		for (unsigned c = 1; c < getNumCols(); ++c) {
+			if (board[r][c].getMat() == FISSOR) {
+				if (board[r][c-1].getMat() == TARGET) {
+					//Fuse the Atom to the right
+					if (board[r][c].getAtom()) {
+						Atom* substrate = board[r][c].getAtom();
+						unsigned total = substrate->getValue();
+						if (total == 1) return;
+						if (total%2) {
+							//The Atom is not evenly divisible
+							substrate->setValue(total/2+1);
+						} else {
+							//The Atom is evenly divisible
+							substrate->setValue(total/2);
+						}
+						board[r][c-1].addAtom(new Atom(substrate->getVariety(), total/2));
 					}
 				} else {
 					throw 16;

@@ -30,7 +30,7 @@ class Tile {
 		Mat getMat() const;
 		//MODIFIERS
 		void setArrow(unsigned waldo, Direction end_state);
-		void setInstruction();
+		void setInstruction(Instruction& instr, unsigned waldo);
 		void addAtom(Atom* atom);
 		void removeAtom();
 		void bond( Reactor& board, unsigned row, unsigned col);

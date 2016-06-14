@@ -37,6 +37,11 @@ Mat Tile::getMat() const {
 	return mat;
 }
 
+void Tile::setInstruction(Instruction& instr, unsigned waldo) {
+	assert(waldo < this->waldos);
+	instructions[waldo] = instr;
+}
+
 void Tile::setArrow(unsigned waldo, Direction end_state) {
 	assert(waldo < this->waldos);
 	if (arrows[waldo]) {

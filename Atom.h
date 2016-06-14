@@ -19,15 +19,17 @@ based on the particular element. Unsigned int atoms can potentially unlimited bo
 
 class Atom {
 	public:
-		Atom(atom_variety variety,unsigned val) : type(variety), value(val) {};
-		unsigned getValue() const { return value; }
+		Atom(AtomVariety variety,unsigned val) : type(variety), value(val) {};
 		//ACCESSORS
+		unsigned getValue() const { return value; }
+		AtomVariety getVariety() const { return type; }
 		Bond& getBond(Direction direction) { return bonds[direction]; }
 		Bond& getBond(unsigned  direction) { return bonds[direction]; }
 		//MODIFIERS
 		void roll(Rotation direction);
 		void rotate(Rotation direction);
 		void unbond();
+		void setValue(unsigned v) { value = v; }
 		//OPERATOS
 		Atom operator+(Atom& other) const;
 		bool operator==(Atom other) const {
@@ -40,7 +42,7 @@ class Atom {
 		void cleanBonds();
 	private:
 		//Memeber variables
-		atom_variety type;
+		AtomVariety type;
 		unsigned value;
 		Bond bonds[4];
 };

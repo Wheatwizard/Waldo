@@ -34,6 +34,7 @@ class  Reactor {
 		void bond();
 		void debond();
 		void fuse();
+		void split();
 		//ACCESSORS
 		unsigned getNumCols() const { return w; }
 		unsigned getNumRows() const { return h; }
