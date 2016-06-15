@@ -85,7 +85,7 @@ void Reactor::handleInstruction(unsigned waldo) {
 	}
 }
 
-void Reactor::advance() {
+void Reactor::advance(unsigned cycle) {
 	if (init_waldos != waldo_num) throw 7;
 	//Iterate through the waldos in priority order 
 	for (unsigned i = 0; i < waldo_num; ++i) {

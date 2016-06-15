@@ -22,6 +22,6 @@ int main(int argc, char** argv) {
 	b[1][1].addAtom(one);
 	b[1][2].addAtom(two);
 	while (true) {
-		b.advance();
+		b.advance(0);
 	}
 }

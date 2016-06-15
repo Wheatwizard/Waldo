@@ -25,7 +25,7 @@ class  Reactor {
 		 Reactor(unsigned width, unsigned height, unsigned num_waldos);
 		~ Reactor();
 		bool positionOnBoard(unsigned row, unsigned col) const;
-		void advance();
+		void advance(unsigned cycle);
 		void addWaldo(const std::string& name, unsigned row, unsigned col);
 		void addInstruction(Instruction inst, unsigned row, unsigned col, unsigned waldo);
 		void addArrow(Direction arrow, unsigned row, unsigned col, unsigned waldo);

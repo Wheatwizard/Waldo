@@ -16,6 +16,6 @@ class Zone {
 		unsigned width;
 		unsigned height;
 		Pipe* link;
-}
+};
 
 #endif

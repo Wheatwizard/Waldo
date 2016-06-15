@@ -73,7 +73,11 @@ void Tile::bond( Reactor& board, unsigned row, unsigned col) {
 		if (bond.getAtom()) {
 			++bond;
 		} else {
-			bond.setAtom(board[row-1][col].getAtom());
+			Atom* otherAtom = board[row-1][col].getAtom();
+			bond.setAtom(otherAtom);
+			if (atom->getPriority() > otherAtom->getPriority()) {
+				atom->setPriority(otherAtom->getPriority());
+			}
 		}
 	}
 	if (row+1 < board.getNumRows() && board[row+1][col].mat == BONDER) {
@@ -81,7 +85,11 @@ void Tile::bond( Reactor& board, unsigned row, unsigned col) {
 		if (bond.getAtom()) {
 			++bond;
 		} else {
-			bond.setAtom(board[row+1][col].getAtom());
+			Atom* otherAtom = board[row+1][col].getAtom();
+			bond.setAtom(otherAtom);
+			if (atom->getPriority() > otherAtom->getPriority()) {
+				atom->setPriority(otherAtom->getPriority());
+			}
 		}
 	}
 	if (col > 0 && board[row][col-1].mat == BONDER) {
@@ -89,7 +97,11 @@ void Tile::bond( Reactor& board, unsigned row, unsigned col) {
 		if (bond.getAtom()) {
 			++bond;
 		} else {
-			bond.setAtom(board[row][col-1].getAtom());
+			Atom* otherAtom = board[row][col-1].getAtom();
+			bond.setAtom(otherAtom);
+			if (atom->getPriority() > otherAtom->getPriority()) {
+				atom->setPriority(otherAtom->getPriority());
+			}
 		}
 	}
 	if (col+1 < board.getNumCols() && board[row][col+1].mat == BONDER) {
@@ -97,12 +109,18 @@ void Tile::bond( Reactor& board, unsigned row, unsigned col) {
 		if (bond.getAtom()) {
 			++bond;
 		} else {
-			bond.setAtom(board[row][col+1].getAtom());
+			Atom* otherAtom = board[row][col+1].getAtom();
+			bond.setAtom(otherAtom);
+			if (atom->getPriority() > otherAtom->getPriority()) {
+				atom->setPriority(otherAtom->getPriority());
+			}
 		}
 	}
 }
 
 void Tile::debond( Reactor& board, unsigned row, unsigned col) {
+	//TODO Implement reprioritization of atoms
+	//(Once we figure out how the hell it works)
 	if (mat != BONDER) return;
 	if (row > 0 && board[row-1][col].mat == BONDER) {
 		Bond& bond = atom->getBond(UP);

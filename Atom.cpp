@@ -1,5 +1,5 @@
 #include "Atom.h" 
-
+#include <unordered_set>
 
 Atom Atom::operator+(Atom& other) const {
 	if (this->type == other.type) {
@@ -70,4 +70,33 @@ void Atom::unbond() {
 	}
 	//Clean this atom
 	this->cleanBonds();
+}
+
+/*
+Is preferred determines which atom gets higher priority for output.
+True indicates that this should be output before other
+*/
+
+bool Atom::isPreferred(Atom* other) const {
+	if (this->creationDate == other->creationDate) {
+		//If they have the same creation date and priority there is ambiguity
+		assert(this->priority != other->priority);
+		return this->priority < other->priority;
+	}
+	return this->creationDate < other->creationDate;
+}
+
+std::unordered_set<Atom*> Atom::getMolecule() {
+	std::unordered_set<Atom*> m = std::unordered_set<Atom*>();
+	return getMolecule(this, m);
+}
+
+std::unordered_set<Atom*> Atom::getMolecule(Atom* root, std::unordered_set<Atom*>& found) {
+	for (unsigned b = 0; b < 4; ++b) {
+		if (found.end() == found.find(bonds[b].getAtom())) {
+			found.insert(bonds[b].getAtom());
+			getMolecule(bonds[b].getAtom(), found);
+		}
+	}
+	return found;
 }
