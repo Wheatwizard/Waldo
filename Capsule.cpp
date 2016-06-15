@@ -15,4 +15,5 @@ Capsule::compatable determines whether two boards can be combined without collis
 
 bool Capsule::compatable(Capsule& other) const {
 	//TODO figure out how this will work
+	return false;
 }

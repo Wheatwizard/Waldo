@@ -6,48 +6,80 @@
 class Instruction {
 	public:
 		//CONSTRUCTORS
-		Instruction() :
-		variety(NO_INSTRUCTION), facing(NO_DIRECTION), rotation(NO_ROTATION), active(true), atom(0) {};
+		Instruction() : variety(NO_INSTRUCTION) {};
 		
-		Instruction(InstructionClass v) :
-		variety(v), facing(NO_DIRECTION), rotation(NO_ROTATION), active(true), atom(0) {};
-		
-		Instruction(InstructionClass v, Direction d) :
-		variety(v), facing(d), rotation(NO_ROTATION), active(true), atom(0) {};
-		
-		Instruction(InstructionClass v, Rotation r) :
-		variety(v), facing(NO_DIRECTION), rotation(r), active(true), atom(0) {};
-		
-		Instruction(InstructionClass v, Direction d, unsigned a) :
-		variety(v), facing(d), atom(a) {}
-		
-		//These constructors are not useful they are just here in case
-		
-		Instruction(InstructionClass v, Direction d, Rotation r, unsigned a) :
-		variety(v), facing(d), rotation(r), active(true), atom(a) {};
+		Instruction(InstructionClass v) : variety(v) {};
 		
 		//ACCESSORS
 		InstructionClass getVariety()   const { return variety; }
-		Direction        getDirection() const { return facing;  }
-		Rotation         getRotation()  const { return rotation;}
-		unsigned         getAtom()      const { return atom;    }
-		bool isActive() const { return active; }
-				
+		
 		//MODIFIERS
 		void setVariety(   InstructionClass v) { variety  = v; }
-		void setDirection( Direction        d) { facing   = d; }
-		void setRotation(  Rotation         r) { rotation = r; }
-		void setAtom(      unsigned         a) { atom     = a; }
 		
+		//Prototypes
+		Direction        getDirection() const { return NO_DIRECTION; }
+		Rotation         getRotation()  const { return NO_ROTATION;  }
+		unsigned         getAtom()      const { return 0;            }
+		bool isActive() const { return false; }
+		
+		void flip() { return; }
+		void flop() { return; }
+	protected:
+		InstructionClass variety;
+};
+
+class Director : public Instruction {
+	public:
+		Director(InstructionClass v, Direction d) : Instruction(v), facing(d) {}
+		
+		//ACCESSORS
+		Direction getDirection() const { return facing; }
+		
+		//MODIFIERS
+		void setDirection( Direction d) { facing = d; }
+
+	protected:
+		Direction facing;
+};
+
+class FlipFlop : public Director {
+	public:
+		FlipFlop(Direction d) : Director(FLIP_FLOP, d) {}
+		
+		//ACCESSORS
+		bool isActive() const { return active; }
+		
+		//MODIFIERS
 		void flip() { active = !active; }
 		void flop() { active = !active; }
-		
-	private:
-		InstructionClass variety;
-		Direction facing;
-		Rotation rotation;
+
+	protected:
 		bool active;
-		unsigned atom;
+};
+
+class Sensor : public Director {
+	public:
+		Sensor(Direction d, unsigned a) : Director(SENSE, d), atom(a) {}
+
+		//ACCESSORS
+		unsigned getAtom() const { return atom; }
+		
+		//MODIFIERS
+		void setAtom(unsigned a) { atom = a; }
+		
+	protected:
+		unsigned atom; 
+};
+
+class Rotator : public Instruction {
+	public:
+		Rotator(Rotation r) : Instruction(ROTATE), rotation(r) {}
+		//ACCESSORS
+		Rotation getRotation() const { return rotation; }
+		//MODIFIERS
+		void setRotation( Rotation r ) { rotation = r; }
+	protected:
+		Rotation rotation;
 };
 
 #endif
