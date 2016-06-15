@@ -10,7 +10,7 @@ class Zone {
 		//ACESSORS
 		std::string getName()    const { return name;   }
 		unsigned    getWidth()   const { return width;  }
-		unsigned    get Height() const { return height; }
+		unsigned    getHeight()  const { return height; }
 	private:
 		std::string name;
 		unsigned width;

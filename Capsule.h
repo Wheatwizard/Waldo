@@ -17,6 +17,8 @@ class Capsule {
 		//ACCESSORS
 		bool compatable(Capsule& other) const;
 		Atom* getAtom() const { return contents; }
+		unsigned getRootRow() const { return r; }
+		unsigned getRootCol() const { return c; }
 	private:
 		Atom* contents;
 		unsigned r, c;
