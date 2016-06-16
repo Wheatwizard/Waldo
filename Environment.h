@@ -3,7 +3,6 @@
 
 #include "Reactor.h"
 #include "Recycler.h"
-#include <queue>
 #include <vector>
 
 class Environment {
@@ -18,6 +17,7 @@ class Environment {
 	private:
 		std::vector<Reactor> reactors;
 		std::vector<Recycler>  recyclers;
+		std::vector<Pipe> pipes;
 		unsigned cycles;
 };
 

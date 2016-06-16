@@ -4,10 +4,7 @@
 #include <vector>
 #include <queue>
 
-#include "Capsule.h"
-
-//A queue of Reactors is a pipe
-typedef std::queue<Capsule> Pipe;
+#include "Pipe.h"
 
 class Recycler {
 	public:

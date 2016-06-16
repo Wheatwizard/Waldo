@@ -2,11 +2,12 @@
 #define __zone_h_
 
 #include <string>
+#include "Pipe.h"
 
 class Zone {
 	public:
 		Zone();
-		Zone(std::string n; unsigned w; unsigned h) : name(n), width(w), height(h);
+		Zone(std::string n, unsigned w, unsigned h) : name(n), width(w), height(h) {};
 		//ACESSORS
 		std::string getName()    const { return name;   }
 		unsigned    getWidth()   const { return width;  }

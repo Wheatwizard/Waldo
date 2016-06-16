@@ -1,4 +1,4 @@
-objects = main.o Atom.o  Reactor.o Bond.o Tile.o Waldo.o Environment.o Recycler.o Capsule.o
+objects = main.o Atom.o Reactor.o Bond.o Tile.o Waldo.o Environment.o Recycler.o Capsule.o Pipe.o
 CXXFLAGS = -Wall
 
 clangdbg : CXXFLAGS = -O0 -g -Wall
@@ -16,8 +16,8 @@ main.o : main.cpp
 Atom.o : Atom.h Atom.cpp Bond.h
 	$(CXX) -c $(CXXFLAGS) Atom.cpp
 
- Reactor.o:  Reactor.h  Reactor.cpp Tile.h Waldo.h
-	$(CXX) -c $(CXXFLAGS)  Reactor.cpp
+Capsule.o : Capsule.h Capsule.cpp Atom.h
+	$(CXX) -c $(CXXFLAGS) Capsule.cpp
 
 Bond.o : Bond.h Bond.cpp Atom.h
 	$(CXX) -c $(CXXFLAGS) Bond.cpp
@@ -25,11 +25,14 @@ Bond.o : Bond.h Bond.cpp Atom.h
 Environment.o : Environment.h Environment.cpp  Reactor.h
 	$(CXX) -c $(CXXFLAGS) Environment.cpp
 
+Pipe.o : Pipe.h Pipe.cpp Capsule.h
+	$(CXX) -c $(CXXFLAGS) Pipe.cpp
+
+Reactor.o: Reactor.h Reactor.cpp Tile.h Waldo.h
+	$(CXX) -c $(CXXFLAGS)  Reactor.cpp
+
 Recycler.o : Recycler.h Recycler.cpp Capsule.h
 	$(CXX) -c $(CXXFLAGS) Recycler.cpp
-
-Capsule.o : Capsule.h Capsule.cpp Atom.h
-	$(CXX) -c $(CXXFLAGS) Capsule.cpp
 
 Tile.o : Tile.h Tile.cpp Atom.h Instruction.h
 	$(CXX) -c $(CXXFLAGS) Tile.cpp
