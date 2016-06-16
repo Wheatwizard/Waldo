@@ -31,7 +31,7 @@ class Bond {
 		unsigned strength;
 };
 
-// this needs to be down here otherwise compiler errors
+//This needs to be down here otherwise compiler errors
 #include "Atom.h"
 
 #endif

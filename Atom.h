@@ -9,13 +9,11 @@ class Bond;
 
 #include "Bond.h"
 
-#include "Enums.h"
-
 /*
 Waldo stores its data in atoms.
 There are two types of atoms.
 Traditional atoms represent a chemical element from Hydrogen(1) to Meitnerium(109).
-Waldo also allows for atoms to store an unsigned integer with no bounds.
+Waldo also allows for atoms to store an unsigned integer greater than zero.
 Atoms can make bonds with each other.  For traditional atoms the number of bonds is limited
 based on the particular element. Unsigned int atoms can potentially unlimited bonds.
 */

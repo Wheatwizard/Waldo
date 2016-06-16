@@ -3,7 +3,6 @@
 
 #include "Reactor.h"
 #include "Recycler.h"
-#include <vector>
 
 class Environment {
 	public:

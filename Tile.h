@@ -3,15 +3,12 @@
 
 #include <cassert>
 #include <stdexcept>
-
 #include "Atom.h"
 
 //forward declare board
 class  Reactor;
 
 #include "Reactor.h"
-
-#include "Enums.h"
 
 /*
 This class is for the tiles that make up the board

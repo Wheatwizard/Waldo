@@ -1,7 +1,9 @@
 #ifndef __reactor_h_
 #define __reactor_h_
 
+#include <vector>
 #include "Instruction.h"
+#include "Zone.h"
 
 //forward declare Tile
 class Tile;
@@ -18,9 +20,16 @@ class  Reactor {
 		unsigned w, h, waldo_num, init_waldos, sensorx, sensory;
 		Tile** board;
 		Waldo* waldos;
-		
+		//Probably should be reimplemented with an array
+		std::vector<Zone> zones;
 		
 		void handleInstruction(unsigned waldo);
+	private:
+		//PRIVATE MODIFIERS
+		void bond();
+		void debond();
+		void fuse();
+		void split();
 	public:
 		 Reactor(unsigned width, unsigned height, unsigned num_waldos);
 		~ Reactor();
@@ -31,10 +40,6 @@ class  Reactor {
 		void addArrow(Direction arrow, unsigned row, unsigned col, unsigned waldo);
 		void popAtom(Atom* root, unsigned row, unsigned col);
 		void dropAtom(Atom* root, unsigned row, unsigned col);
-		void bond();
-		void debond();
-		void fuse();
-		void split();
 		//ACCESSORS
 		unsigned getNumCols() const { return w; }
 		unsigned getNumRows() const { return h; }

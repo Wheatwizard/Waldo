@@ -7,8 +7,6 @@ class  Reactor;
 #include "Reactor.h"
 
 #include <string>
-#include "Atom.h"
-#include "Tile.h"
 
 class Waldo {
 	public:
