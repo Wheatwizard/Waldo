@@ -14,6 +14,8 @@ class Capsule {
 		Capsule();
 		Capsule(Atom* root, unsigned rIn, unsigned cIn);
 		~Capsule();
+		//destructor helper
+		void destroy();
 		//ACCESSORS
 		bool compatable(Capsule& other) const;
 		Atom* getAtom() const { return contents; }

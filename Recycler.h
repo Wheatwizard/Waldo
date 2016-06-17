@@ -4,15 +4,12 @@
 #include <vector>
 #include <queue>
 
-#include "Pipe.h"
+#include "Connector.h"
 
-class Recycler {
+class Recycler : public Connector {
 	public:
-		Recycler() : inputs() {}
-		void advance();
-		void connect(Pipe* p) { inputs.push_back(p); }
-	private:
-		std::vector<Pipe*> inputs;
+		Recycler() {}
+		void push(Capsule in) {in.destroy();}
 };
 
 #endif

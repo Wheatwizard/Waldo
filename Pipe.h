@@ -2,18 +2,18 @@
 #define __pipe_h_
 
 #include <queue>
-#include "Capsule.h"
+#include "Connector.h"
 
-class Pipe {
+class Pipe : public Connector {
 	public:
-		Pipe() : inQ(), outQ() {}
+		Pipe() : Connector(), inQ(), outQ() {}
 		//ACCESSORS
 		bool empty() const { return outQ.empty(); }
 		//MODIFIERS
 		void push(Capsule in) { inQ.push(in); }
 		Capsule pop() { Capsule a = outQ.front(); outQ.pop(); return a; }
 		void advance();
-	private:
+	protected:
 		std::queue<Capsule> inQ;
 		std::queue<Capsule> outQ;	
 };
