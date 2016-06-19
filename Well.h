@@ -2,12 +2,14 @@
 #define __well_h_
 
 #include "Connector.h"
+#include <vector>
 
 class Well : public Connector {
 	public:
 		Well();
 		Well(std::vector<Capsule> l) : startPath(), loopPath(l), locationMarker(loopPath.begin()) {}
 		Well(std::vector<Capsule> s, std::vector<Capsule> l) : startPath(s), loopPath(l), locationMarker(startPath.begin()) {}
+		Capsule pop();
 	private:
 		std::vector<Capsule> startPath;
 		std::vector<Capsule> loopPath;
