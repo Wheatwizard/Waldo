@@ -4,6 +4,7 @@
 #include "Reactor.h"
 #include "Pipe.h"
 #include "Recycler.h"
+#include "Well.h"
 
 class Environment {
 	public:
