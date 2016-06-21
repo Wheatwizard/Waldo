@@ -1,4 +1,4 @@
-objects = main.o Atom.o Reactor.o Bond.o Tile.o Waldo.o Environment.o Capsule.o Pipe.o Well.o
+objects = main.o Atom.o Reactor.o Bond.o Tile.o Waldo.o Environment.o Capsule.o Pipe.o Well.o WellIterator.o
 CXXFLAGS = -Wall -std=gnu++11
 
 clangdbg : CXXFLAGS = -O0 -g -Wall
@@ -37,8 +37,11 @@ Tile.o : Tile.h Tile.cpp Atom.h Instruction.h
 Waldo.o : Waldo.h Waldo.cpp Atom.h  Reactor.h Tile.h
 	$(CXX) -c $(CXXFLAGS) Waldo.cpp
 
-Well.o : Well.h Well.cpp Capsule.h
+Well.o : Well.h Well.cpp WellIterator.h
 	$(CXX) -c $(CXXFLAGS) Well.cpp
+
+WellIterator.o : WellIterator.h WellIterator.cpp Capsule.h
+	$(CXX) -c $(CXXFLAGS) WellIterator.cpp
 
 clean :
 	rm -f waldo $(objects)
